@@ -1,5 +1,8 @@
 @extends('client_layout.client')
 
+@section('title')
+    Nos Produits
+@endsection
 @section('content')
 
 

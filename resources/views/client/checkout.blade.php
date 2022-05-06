@@ -1,5 +1,9 @@
 @extends('client_layout.client')
 
+@section('title')
+    Valider la Commande
+@endsection
+
 @section('content')
 
 
