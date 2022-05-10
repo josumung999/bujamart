@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Se Connecter - BujaMart</title>
+    <title>S'Inscrire - BujaMart</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -42,6 +42,11 @@
 						<i class="zmdi zmdi-font"></i>
 					</span>
 
+                <div class="wrap-input100 validate-input" data-validate = "Votre nom complet: Alex Irakoze">
+                    <input class="input100" type="text" name="name">
+                    <span class="focus-input100" data-placeholder="Nom complet"></span>
+                </div>
+
                 <div class="wrap-input100 validate-input" data-validate = "Adresse email valide: moi@exemple.com">
                     <input class="input100" type="text" name="email">
                     <span class="focus-input100" data-placeholder="Email"></span>
@@ -51,26 +56,34 @@
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
-                    <input class="input100" type="password" name="pass">
+                    <input class="input100" type="password" name="password">
                     <span class="focus-input100" data-placeholder="Mot de Passe"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate="Confirmer mot de passe">
+						<span class="btn-show-pass">
+							<i class="zmdi zmdi-eye"></i>
+						</span>
+                    <input class="input100" type="password" name="password-confirm">
+                    <span class="focus-input100" data-placeholder="confirmer mot de Passe"></span>
                 </div>
 
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>
                         <button class="login100-form-btn">
-                            Se Connecter
+                            S'inscrire
                         </button>
                     </div>
                 </div>
 
                 <div class="text-center p-t-115">
 						<span class="txt1">
-							Vous n'avez pas de compte ?
+							Vous avez déjà un compte ?
 						</span>
 
-                    <a class="txt2" href="{{ url('/signup') }}">
-                        S'inscrire
+                    <a class="txt2" href="{{ url('/login') }}">
+                        Se connecter
                     </a>
                 </div>
             </form>

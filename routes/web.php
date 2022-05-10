@@ -21,6 +21,7 @@ Route::get('/checkout', [\App\Http\Controllers\ClientController::class, 'checkou
 
 // Authentication routes
 Route::get('/login', [\App\Http\Controllers\ClientController::class, 'login']);
+Route::get('/signup', [\App\Http\Controllers\ClientController::class, 'signup']);
 
 /*Route::get('/dashboard', function () {
     return view('dashboard');
