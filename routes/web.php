@@ -13,12 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\ClientController::class, 'home']);
-Route::get('/shop', [\App\Http\Controllers\ClientController::class, 'shop']);
-Route::get('/cart', [\App\Http\Controllers\ClientController::class, 'cart']);
-Route::get('/checkout', [\App\Http\Controllers\ClientController::class, 'checkout']);
-
-
 // Authentication routes
 Route::get('/login', [\App\Http\Controllers\ClientController::class, 'login']);
 Route::get('/signup', [\App\Http\Controllers\ClientController::class, 'signup']);
@@ -28,5 +22,19 @@ Route::get('/signup', [\App\Http\Controllers\ClientController::class, 'signup'])
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';*/
+
+
+Route::get('/', [\App\Http\Controllers\ClientController::class, 'home']);
+Route::get('/shop', [\App\Http\Controllers\ClientController::class, 'shop']);
+Route::get('/cart', [\App\Http\Controllers\ClientController::class, 'cart']);
+Route::get('/checkout', [\App\Http\Controllers\ClientController::class, 'checkout']);
+
+
+
+
+// Admin Routes
+
+Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'admin']);
+
 
 
