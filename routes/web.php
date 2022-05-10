@@ -24,6 +24,7 @@ Route::get('/signup', [\App\Http\Controllers\ClientController::class, 'signup'])
 require __DIR__.'/auth.php';*/
 
 
+// Client Routes
 Route::get('/', [\App\Http\Controllers\ClientController::class, 'home']);
 Route::get('/shop', [\App\Http\Controllers\ClientController::class, 'shop']);
 Route::get('/cart', [\App\Http\Controllers\ClientController::class, 'cart']);
@@ -35,6 +36,7 @@ Route::get('/checkout', [\App\Http\Controllers\ClientController::class, 'checkou
 // Admin Routes
 
 Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'admin']);
-
+Route::get('/addcategory', [\App\Http\Controllers\CategoryController::class, 'add_category']);
+Route::get('/categories', [\App\Http\Controllers\CategoryController::class, 'categories']);
 
 

@@ -237,12 +237,12 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/mailbox/mailbox.html" class="nav-link">
+                                <a href="{{ url('/categories') }}" class="nav-link">
                                     <p>Toutes Les Catégories</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/mailbox/compose.html" class="nav-link">
+                                <a href="{{ url('/addcategory') }}" class="nav-link">
                                     <p>Créer Catégorie</p>
                                 </a>
                             </li>
@@ -355,9 +355,14 @@
 <script src="backend/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="backend/dist/js/adminlte.js"></script>
+
 <!-- AdminLTE for demo purposes -->
 <script src="backend/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="backend/dist/js/pages/dashboard.js"></script>
+
+{{-- Custom scripts for some pages --}}
+@yield('scripts')
+{{-- End custom scripts --}}
 </body>
 </html>
