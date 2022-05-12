@@ -1,5 +1,14 @@
 @extends('admin_layout.admin')
 
+@section('styles')
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="backend/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+@endsection
+
 @section('content')
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -44,12 +53,12 @@
                                         <td> 4</td>
                                         <td>
                                             <span class="d-flex flex-row">
-                                                <button class="btn btn-primary mx-2">
+                                                <a href="#" class="btn btn-primary mx-2">
                                                     <i class="fas fa-edit"></i>
-                                                </button>
-                                                <button class="btn btn-danger">
+                                                </a>
+                                                <a href="#" id="delete" class="btn btn-danger">
                                                     <i class="fa fa-times"></i>
-                                                </button>
+                                                </a>
                                             </span>
                                         </td>
                                     </tr>
@@ -58,12 +67,12 @@
                                         <td>5</td>
                                         <td>
                                             <span class="d-flex flex-row">
-                                                <button class="btn btn-primary mx-2">
+                                                <a href="#" class="btn btn-primary mx-2">
                                                     <i class="fas fa-edit"></i>
-                                                </button>
-                                                <button class="btn btn-danger">
+                                                </a>
+                                                <a href="#" id="delete" class="btn btn-danger">
                                                     <i class="fa fa-times"></i>
-                                                </button>
+                                                </a>
                                             </span>
                                         </td>
                                     </tr>
@@ -101,6 +110,7 @@
     <script src="backend/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="backend/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="backend/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script src="backend/dist/js/bootbox.js"></script>
     <script>
         $(function () {
             $("#example1").DataTable({
@@ -116,6 +126,16 @@
                 "autoWidth": false,
                 "responsive": true,
             });
+            $(document).on('click', '#delete', function (e) {
+               e.preventDefault();
+               var link = $(this).attr('href');
+               bootbox.confirm('Do you really want to delete this element ?', function (confirmed) {
+                   if (confirmed) {
+                       window.location.href = link;
+                   };
+               });
+            });
         });
     </script>
+    <script src="backend/dist/js/adminlte.js"></script>
 @endsection
