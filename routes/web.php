@@ -39,4 +39,5 @@ Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'admin']);
 Route::get('/addcategory', [\App\Http\Controllers\CategoryController::class, 'add_category']);
 Route::get('/categories', [\App\Http\Controllers\CategoryController::class, 'categories']);
 Route::get('/addslider', [\App\Http\Controllers\SliderController::class, 'add_slider']);
+Route::get('/sliders', [\App\Http\Controllers\SliderController::class, 'sliders']);
 
