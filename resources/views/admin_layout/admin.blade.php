@@ -209,7 +209,7 @@
             <!-- SidebarSearch Form -->
             <div class="form-inline">
                 <div class="input-group" data-widget="sidebar-search">
-                    <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Rechercher">
+                    <input class="form-control form-control-sidebar" type="search" placeholder="Rechercher" aria-label="Rechercher">
                     <div class="input-group-append">
                         <button class="btn btn-sidebar">
                             <i class="fas fa-search fa-fw"></i>
@@ -250,6 +250,27 @@
                             <li class="nav-item">
                                 <a href="{{ url('/addcategory') }}" class="nav-link">
                                     <p>Créer Catégorie</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon far fa-folder"></i>
+                            <p>
+                                Slides
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ url('/sliders') }}" class="nav-link">
+                                    <p>Toutes les Slides</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url('/addslider') }}" class="nav-link">
+                                    <p>Créer Slider</p>
                                 </a>
                             </li>
                         </ul>
