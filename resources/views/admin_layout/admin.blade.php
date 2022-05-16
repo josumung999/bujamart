@@ -306,7 +306,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/examples/invoice.html" class="nav-link">
+                                <a href="{{ url('/orders') }}" class="nav-link">
                                     <p>Toutes les Commandes</p>
                                 </a>
                             </li>
