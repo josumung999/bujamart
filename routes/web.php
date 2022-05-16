@@ -51,3 +51,7 @@ Route::get('/sliders', [\App\Http\Controllers\SliderController::class, 'sliders'
 Route::get('/addproduct', [\App\Http\Controllers\ProductController::class, 'addproduct']);
 Route::get('/products', [\App\Http\Controllers\ProductController::class, 'products']);
 
+// Routes for orders
+Route::get('/orders', [\App\Http\Controllers\OrderController::class, 'orders']);
+
+

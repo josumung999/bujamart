@@ -17,12 +17,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Produits</h1>
+                        <h1>Commandes</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ url('/admin') }}">Tableau de Bord</a></li>
-                            <li class="breadcrumb-item active">Produits</li>
+                            <li class="breadcrumb-item active">Commandes</li>
                         </ol>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Tous les Produits</h3>
+                                <h3 class="card-title">Toutes les commandes</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -43,38 +43,41 @@
                                     <thead>
                                     <tr>
                                         <th>Num.</th>
-                                        <th>Image</th>
-                                        <th>Nom</th>
-                                        <th>Description</th>
-                                        <th>Prix</th>
-                                        <th>Catégorie</th>
-                                        <th>Action</th>
+                                        <th>ID.</th>
+                                        <th>Nom du Client</th>
+                                        <th>Adresse</th>
+                                        <th>Montant</th>
+                                        <th>Statut</th>
+                                        <th>Téléphone</th>
+                                        <th>Email</th>
+                                        <th>Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td> 1</td>
                                             <td>
-                                                <div class="image">
-                                                    <img src="backend/dist/img/user2-160x160.jpg" class="img-circle elevation-2" width="40" height="40" alt="User Image">
-                                                </div>
+                                                2838372938282
                                             </td>
-                                            <td>Banane</td>
+                                            <td>Alan Dale</td>
                                             <td>
-                                                Bananes Cultivées à Rumonge
+                                                Mukaza, N°11 Avenue de L'amitié, Rohero
                                             </td>
                                             <td>
-                                              1.000 BIF
+                                              67.000 FBU
                                             </td>
                                             
                                             <td>
-                                              Fruits
+                                              En Cours
+                                            </td>
+                                            <td>
+                                              79 234 747
+                                            </td>
+                                            <td>
+                                              alan@gmail.com
                                             </td>
                                             <td>
                                                 <span class="d-flex flex-row">
-                                                    <a href="#" class="btn btn-warning btn-sm mx-2">
-                                                        Activer
-                                                    </a>
                                                     <a href="#" class="btn btn-primary btn-sm mx-2">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
@@ -87,26 +90,27 @@
                                         <tr>
                                           <td> 1</td>
                                           <td>
-                                              <div class="image">
-                                                  <img src="backend/dist/img/user2-160x160.jpg" class="img-circle elevation-2" width="40" height="40" alt="User Image">
-                                              </div>
+                                              2838372938282
                                           </td>
-                                          <td>1 Kg de Viande de Boeuf</td>
+                                          <td>Alan Dale</td>
                                           <td>
-                                              Viande fraiche en provenance de Kirundo
+                                              Mukaza, N°11 Avenue de L'amitié, Rohero
                                           </td>
                                           <td>
-                                            12,000 BIF
+                                            67.000 FBU
                                           </td>
                                           
                                           <td>
-                                            Viande Rouge
+                                            En Cours
+                                          </td>
+                                          <td>
+                                            79 234 747
+                                          </td>
+                                          <td>
+                                            alan@gmail.com
                                           </td>
                                           <td>
                                               <span class="d-flex flex-row">
-                                                  <a href="#" class="btn bg-green btn-sm mx-2">
-                                                      Désactiver
-                                                  </a>
                                                   <a href="#" class="btn btn-primary btn-sm mx-2">
                                                       <i class="fas fa-edit"></i>
                                                   </a>
@@ -120,11 +124,13 @@
                                     <tfoot>
                                     <tr>
                                       <th>Num.</th>
-                                      <th>Image</th>
-                                      <th>Nom</th>
-                                      <th>Description</th>
-                                      <th>Prix</th>
-                                      <th>Catégorie</th>
+                                      <th>ID.</th>
+                                      <th>Nom du Client</th>
+                                      <th>Adresse</th>
+                                      <th>Montant</th>
+                                      <th>Statut</th>
+                                      <th>Téléphone</th>
+                                      <th>Email</th>
                                       <th>Action</th>
                                     </tr>
                                     </tfoot>
@@ -173,7 +179,7 @@
             $(document).on('click', '#delete', function (e) {
                 e.preventDefault();
                 var link = $(this).attr('href');
-                bootbox.confirm('Voulez vous vraiment effacer ce Produit ?', function (confirmed) {
+                bootbox.confirm('Voulez vous vraiment effacer cette Commande ?', function (confirmed) {
                     if (confirmed) {
                         window.location.href = link;
                     };
