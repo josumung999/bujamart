@@ -11,8 +11,8 @@
         <div class="container">
             <div class="row no-gutters slider-text align-items-center justify-content-center">
                 <div class="col-md-9 ftco-animate text-center">
-                    <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Products</span></p>
-                    <h1 class="mb-0 bread">Products</h1>
+                    <p class="breadcrumbs"><span class="mr-2"><a href="{{ url('/') }}">Accueil</a></span> <span>Boutique</span></p>
+                    <h1 class="mb-0 bread">Boutique</h1>
                 </div>
             </div>
         </div>
@@ -23,11 +23,18 @@
             <div class="row justify-content-center">
                 <div class="col-md-10 mb-5 text-center">
                     <ul class="product-category">
-                        <li><a href="#" class="active">All</a></li>
-                        <li><a href="#">Vegetables</a></li>
+                        <li><a href="#" class="active">Tous</a></li>
+                        <li><a href="#">Legumes</a></li>
                         <li><a href="#">Fruits</a></li>
-                        <li><a href="#">Juice</a></li>
-                        <li><a href="#">Dried</a></li>
+                        <li><a href="#">Céréales</a></li>
+                        <li><a href="#">Viandes</a></li>
+                        <li><a href="#">Poissons</a></li>
+                        <li><a href="#">Farines</a></li>
+                        <li><a href="#">Boissons</a></li>
+                        <li><a href="#">Combustibles</a></li>
+                        <li><a href="#">Noix</a></li>
+                        <li><a href="#">Beurres</a></li>
+                        <li><a href="#">Huiles</a></li>
                     </ul>
                 </div>
             </div>
