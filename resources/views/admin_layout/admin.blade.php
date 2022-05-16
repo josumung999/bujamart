@@ -285,12 +285,12 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/examples/invoice.html" class="nav-link">
+                                <a href="{{ url('/products') }}" class="nav-link">
                                     <p>Tous les Produits</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/examples/profile.html" class="nav-link">
+                                <a href="{{ url('/addproduct') }}" class="nav-link">
                                     <p>Créer un Produit</p>
                                 </a>
                             </li>
