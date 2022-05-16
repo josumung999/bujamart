@@ -38,8 +38,8 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
               <!-- Add icons to the links using the .nav-icon class
                    with font-awesome or any other icon font library -->
-              <li class="nav-item menu-open">
-                  <a href="#" class="nav-link active">
+              <li class="nav-item">
+                  <a href="{{ url('/admin') }}" class="nav-link {{ request()->is('admin') ? 'active' : '' }}">
                       <i class="nav-icon fas fa-tachometer-alt"></i>
                       <p>
                           Tableau de Bord
@@ -48,8 +48,8 @@
               </li>
               <li class="nav-header">GESTION</li>
 
-              <li class="nav-item">
-                  <a href="#" class="nav-link">
+              <li class="nav-item {{ request()->is('categories') || request()->is('addcategory') ? 'menu-open' : '' }}">
+                  <a href="#" class="nav-link {{ request()->is('categories') || request()->is('addcategory') ? 'active' : '' }}">
                       <i class="nav-icon far fa-folder"></i>
                       <p>
                           Catégories
@@ -58,19 +58,19 @@
                   </a>
                   <ul class="nav nav-treeview">
                       <li class="nav-item">
-                          <a href="{{ url('/categories') }}" class="nav-link">
+                          <a href="{{ url('/categories') }}" class="nav-link {{ request()->is('categories') ? 'active' : '' }}">
                               <p>Toutes Les Catégories</p>
                           </a>
                       </li>
                       <li class="nav-item">
-                          <a href="{{ url('/addcategory') }}" class="nav-link">
+                          <a href="{{ url('/addcategory') }}" class="nav-link {{ request()->is('addcategory') ? 'active' : '' }}">
                               <p>Créer Catégorie</p>
                           </a>
                       </li>
                   </ul>
               </li>
-              <li class="nav-item">
-                  <a href="#" class="nav-link">
+              <li class="nav-item {{ request()->is('sliders') || request()->is('addslider') ? 'menu-open' : '' }}">
+                  <a href="#" class="nav-link nav-item {{ request()->is('sliders') || request()->is('addslider') ? 'active' : '' }}">
                       <i class="nav-icon far fa-folder"></i>
                       <p>
                           Slides
@@ -79,19 +79,19 @@
                   </a>
                   <ul class="nav nav-treeview">
                       <li class="nav-item">
-                          <a href="{{ url('/sliders') }}" class="nav-link">
+                          <a href="{{ url('/sliders') }}" class="nav-link {{ request()->is('sliders') ? 'active' : '' }}">
                               <p>Toutes les Slides</p>
                           </a>
                       </li>
                       <li class="nav-item">
-                          <a href="{{ url('/addslider') }}" class="nav-link">
+                          <a href="{{ url('/addslider') }}" class="nav-link {{ request()->is('addslider') ? 'active' : '' }}">
                               <p>Créer Slider</p>
                           </a>
                       </li>
                   </ul>
               </li>
-              <li class="nav-item">
-                  <a href="#" class="nav-link">
+              <li class="nav-item {{ request()->is('products') || request()->is('addproduct') ? 'menu-open' : '' }}">
+                  <a href="#" class="nav-link {{ request()->is('products') || request()->is('addproduct') ? 'active' : '' }}">
                       <i class="nav-icon far fa-folder"></i>
                       <p>
                           Produits
@@ -100,19 +100,19 @@
                   </a>
                   <ul class="nav nav-treeview">
                       <li class="nav-item">
-                          <a href="{{ url('/products') }}" class="nav-link">
+                          <a href="{{ url('/products') }}" class="nav-link {{ request()->is('products') ? 'active' : '' }}">
                               <p>Tous les Produits</p>
                           </a>
                       </li>
                       <li class="nav-item">
-                          <a href="{{ url('/addproduct') }}" class="nav-link">
+                          <a href="{{ url('/addproduct') }}" class="nav-link {{ request()->is('addproduct') ? 'active' : '' }}">
                               <p>Créer un Produit</p>
                           </a>
                       </li>
                   </ul>
               </li>
-              <li class="nav-item">
-                  <a href="#" class="nav-link">
+              <li class="nav-item {{ request()->is('orders') ? 'menu-open' : '' }}">
+                  <a href="#" class="nav-link {{ request()->is('orders') ? 'active' : '' }}">
                       <i class="nav-icon far fa-folder"></i>
                       <p>
                           Commandes
@@ -121,7 +121,7 @@
                   </a>
                   <ul class="nav nav-treeview">
                       <li class="nav-item">
-                          <a href="{{ url('/orders') }}" class="nav-link">
+                          <a href="{{ url('/orders') }}" class="nav-link {{ request()->is('orders') ? 'active' : '' }}">
                               <p>Toutes les Commandes</p>
                           </a>
                       </li>
