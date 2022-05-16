@@ -11,8 +11,8 @@
         <div class="container">
             <div class="row no-gutters slider-text align-items-center justify-content-center">
                 <div class="col-md-9 ftco-animate text-center">
-                    <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Checkout</span></p>
-                    <h1 class="mb-0 bread">Checkout</h1>
+                    <p class="breadcrumbs"><span class="mr-2"><a href="{{ url('/') }}">Accueil</a></span> <span>Commander</span></p>
+                    <h1 class="mb-0 bread">Commander</h1>
                 </div>
             </div>
         </div>
@@ -23,33 +23,30 @@
             <div class="row justify-content-center">
                 <div class="col-xl-7 ftco-animate">
                     <form action="#" class="billing-form">
-                        <h3 class="mb-4 billing-heading">Billing Details</h3>
+                        <h3 class="mb-4 billing-heading">Informations de Livraison</h3>
                         <div class="row align-items-end">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="firstname">Firt Name</label>
+                                    <label for="firstname">Prénom</label>
                                     <input type="text" class="form-control" placeholder="">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="lastname">Last Name</label>
+                                    <label for="lastname">Nom de Famille</label>
                                     <input type="text" class="form-control" placeholder="">
                                 </div>
                             </div>
                             <div class="w-100"></div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="country">State / Country</label>
+                                    <label for="country">Commune</label>
                                     <div class="select-wrap">
                                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>
                                         <select name="" id="" class="form-control">
-                                            <option value="">France</option>
-                                            <option value="">Italy</option>
-                                            <option value="">Philippines</option>
-                                            <option value="">South Korea</option>
-                                            <option value="">Hongkong</option>
-                                            <option value="">Japan</option>
+                                            <option value="">Mukaza</option>
+                                            <option value="">Muha</option>
+                                            <option value="">Ntahangwa</option>
                                         </select>
                                     </div>
                                 </div>
@@ -57,38 +54,25 @@
                             <div class="w-100"></div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="streetaddress">Street Address</label>
-                                    <input type="text" class="form-control" placeholder="House number and street name">
+                                    <label for="streetaddress">Adresse Complète</label>
+                                    <input type="text" class="form-control" placeholder="Exemple: N°11, Avenue Buragane, Kinindo">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Appartment, suite, unit etc: (optional)">
-                                </div>
-                            </div>
-                            <div class="w-100"></div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="towncity">Town / City</label>
-                                    <input type="text" class="form-control" placeholder="">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="postcodezip">Postcode / ZIP *</label>
-                                    <input type="text" class="form-control" placeholder="">
+                                    <input type="text" class="form-control" placeholder="Détails Supplementaire">
                                 </div>
                             </div>
                             <div class="w-100"></div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="phone">Phone</label>
+                                    <label for="phone">Téléphone</label>
                                     <input type="text" class="form-control" placeholder="">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="emailaddress">Email Address</label>
+                                    <label for="emailaddress">Adresse Email</label>
                                     <input type="text" class="form-control" placeholder="">
                                 </div>
                             </div>
@@ -96,8 +80,8 @@
                             <div class="col-md-12">
                                 <div class="form-group mt-4">
                                     <div class="radio">
-                                        <label class="mr-3"><input type="radio" name="optradio"> Create an Account? </label>
-                                        <label><input type="radio" name="optradio"> Ship to different address</label>
+                                        <label class="mr-3"><input type="radio" name="optradio"> Créer un Compte ? </label>
+                                        <label><input type="radio" name="optradio"> Livrée à une adresse différente ?</label>
                                     </div>
                                 </div>
                             </div>
@@ -108,7 +92,7 @@
                     <div class="row mt-5 pt-3">
                         <div class="col-md-12 d-flex mb-5">
                             <div class="cart-detail cart-total p-3 p-md-4">
-                                <h3 class="billing-heading mb-4">Cart Total</h3>
+                                <h3 class="billing-heading mb-4">Panier</h3>
                                 <p class="d-flex">
                                     <span>Subtotal</span>
                                     <span>$20.60</span>
@@ -130,18 +114,11 @@
                         </div>
                         <div class="col-md-12">
                             <div class="cart-detail p-3 p-md-4">
-                                <h3 class="billing-heading mb-4">Payment Method</h3>
+                                <h3 class="billing-heading mb-4">Moyen de Paiement</h3>
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <div class="radio">
-                                            <label><input type="radio" name="optradio" class="mr-2"> Direct Bank Tranfer</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-12">
-                                        <div class="radio">
-                                            <label><input type="radio" name="optradio" class="mr-2"> Check Payment</label>
+                                            <label><input type="radio" name="optradio" class="mr-2"> Lumicash/Ecocash</label>
                                         </div>
                                     </div>
                                 </div>
@@ -154,12 +131,19 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12">
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" value="" class="mr-2"> I have read and accept the terms and conditions</label>
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio" class="mr-2"> Payer avec Ihela</label>
                                         </div>
                                     </div>
                                 </div>
-                                <p><a href="#"class="btn btn-primary py-3 px-4">Place an order</a></p>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" value="" class="mr-2"> J'ai lu et j'accepte les conditions d'utilisation</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p><a href="#"class="btn btn-primary py-3 px-4">Placer la Commande</a></p>
                             </div>
                         </div>
                     </div>
