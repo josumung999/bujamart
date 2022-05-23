@@ -41,6 +41,7 @@ Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'admin']);
 
 // Routes for categories
 Route::get('/addcategory', [\App\Http\Controllers\CategoryController::class, 'add_category']);
+Route::post('/savecategory', [\App\Http\Controllers\CategoryController::class, 'savecategory']);
 Route::get('/categories', [\App\Http\Controllers\CategoryController::class, 'categories']);
 
 // Routes for sliders

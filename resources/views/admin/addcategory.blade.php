@@ -33,18 +33,23 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form id="quickForm">
+                            {{-- <form> --}}
+                            {!! Form::open(['action' => 'App\Http\Controllers\CategoryController@savecategory', 'method' => 'POST',]) !!}
+                                {{ csrf_field() }}
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Nom de la catégorie</label>
-                                        <input type="text" name="category_name" class="form-control" id="exampleInputEmail1" placeholder="Nom de la catégorie">
+                                        {{-- <labelfor="exampleInputEmail1">Nomdelacatégorie</label> --}}
+                                        {{ Form::label('', 'Nom de la catégorie', ['for' => 'exampleInputEmail1']) }}
+                                        {{ Form::text('category_name', '', ['class' => 'form-control', 'id' => 'exampleInputEmail1', 'placeholder' => 'Nom de la catégorie']) }}
+                                        {{-- <inputtype="text"name="category_name"class="form-control"id="exampleInputEmail1"placeholder="Nomdelacatégorie"> --}}
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Enregistrer</button>
                                 </div>
-                            </form>
+                            {!! Form::close() !!}
+                            {{-- </form> --}}
                         </div>
                         <!-- /.card -->
                     </div>
