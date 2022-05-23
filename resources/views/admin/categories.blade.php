@@ -70,7 +70,7 @@
                                                     <a href="{{ url('/edit-category/'.$category->id) }}" class="btn btn-primary mx-2">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
-                                                    <a href="#" id="delete" class="btn btn-danger">
+                                                    <a href="{{ url('/delete-category/'.$category->id) }}" id="delete" class="btn btn-danger">
                                                         <i class="fa fa-times"></i>
                                                     </a>
                                                 </span>

@@ -44,4 +44,12 @@ class CategoryController extends Controller
 
         return redirect('/categories')->with('status', 'Catégorie mise à jour!');
     } 
+
+    public function delete_category($id) {
+        $category = Category::find($id);
+
+        $category->delete();
+
+        return back()->with('status', 'La catégorie a été supprimée avec succès');
+    }
 }
