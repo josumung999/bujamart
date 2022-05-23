@@ -22,7 +22,10 @@ class CategoryController extends Controller
     }
 
     public function categories() {
-        return view('admin.categories');
+
+        $categories = Category::All();
+
+        return view('admin.categories')->with('categories', $categories);
     }
 
 }
