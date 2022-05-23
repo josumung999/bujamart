@@ -28,4 +28,13 @@ class CategoryController extends Controller
         return view('admin.categories')->with('categories', $categories);
     }
 
+    public function edit_category($id) {
+        $category = Category::find($id);
+
+        return view('admin.edit_category')->with('category', $category);
+    }
+
+    public function updatecategory(Request $request) {
+        
+    }
 }

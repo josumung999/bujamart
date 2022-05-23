@@ -42,8 +42,9 @@ Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'admin']);
 // Routes for categories
 Route::get('/addcategory', [\App\Http\Controllers\CategoryController::class, 'add_category']);
 Route::post('/savecategory', [\App\Http\Controllers\CategoryController::class, 'savecategory']);
+Route::get('/edit-category/{id}', [\App\Http\Controllers\CategoryController::class, 'edit_category']);
+Route::post('/updatecategory', [\App\Http\Controllers\CategoryController::class, 'updatecategory']);
 Route::get('/categories', [\App\Http\Controllers\CategoryController::class, 'categories']);
-
 // Routes for sliders
 Route::get('/addslider', [\App\Http\Controllers\SliderController::class, 'add_slider']);
 Route::get('/sliders', [\App\Http\Controllers\SliderController::class, 'sliders']);
