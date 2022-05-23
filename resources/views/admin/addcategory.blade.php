@@ -31,6 +31,24 @@
                             <div class="card-header">
                                 <h3 class="card-title">Créer une Catégorie</h3>
                             </div>
+
+                            @if (Session::has('status'))
+                                <div class="alert alert-success mx-2 my-2">
+                                    {{ Session::get('status') }}
+                                </div>
+                            @endif
+
+                            @if (count($errors) > 0)
+                                    <div class="alert alert-danger mx-2 my-2">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>
+                                                    {{ $error }}
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                            @endif
                             <!-- /.card-header -->
                             <!-- form start -->
                             {{-- <form> --}}
@@ -46,7 +64,8 @@
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                    {{-- <buttontype="submit"class="btnbtn-primary">Enregistrer</button> --}}
+                                    {{ Form::submit('Enregistrer', ['class' => 'btn btn-primary']) }}
                                 </div>
                             {!! Form::close() !!}
                             {{-- </form> --}}
