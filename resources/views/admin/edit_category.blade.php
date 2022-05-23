@@ -49,7 +49,7 @@
                                 {{ csrf_field() }}
                                 <div class="card-body">
                                     <div class="form-group">
-                                        {{ Form::hidden($category->id, '') }}
+                                        {{ Form::hidden('id', $category->id) }}
                                         {{-- <labelfor="exampleInputEmail1">Nomdelacatégorie</label> --}}
                                         {{ Form::label('', 'Nom de la catégorie', ['for' => 'exampleInputEmail1']) }}
                                         {{ Form::text('category_name', $category->category_name, ['class' => 'form-control', 'id' => 'exampleInputEmail1', 'placeholder' => 'Nom de la catégorie']) }}
@@ -59,7 +59,7 @@
                                 <!-- /.card-body -->
                                 <div class="card-footer">
                                     {{-- <buttontype="submit"class="btnbtn-primary">Enregistrer</button> --}}
-                                    {{ Form::submit('Enregistrer', ['class' => 'btn btn-primary']) }}
+                                    {{ Form::submit('Mettre à jour', ['class' => 'btn btn-primary']) }}
                                 </div>
                             {!! Form::close() !!}
                             {{-- </form> --}}

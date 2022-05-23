@@ -35,6 +35,13 @@ class CategoryController extends Controller
     }
 
     public function updatecategory(Request $request) {
+        $this->validate($request, ['category_name' => 'required']);
         
-    }
+        $category = Category::find($request->input('id'));
+        $category->category_name = $request->input('category_name');
+
+        $category->update();
+
+        return redirect('/categories')->with('status', 'Catégorie mise à jour!');
+    } 
 }
