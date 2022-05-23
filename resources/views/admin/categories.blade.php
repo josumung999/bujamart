@@ -10,6 +10,7 @@
 @endsection
 
 @section('content')
+    {{ Form::hidden('', $increment = 1) }}
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -35,7 +36,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">DataTable with minimal features & hover style</h3>
+                                <h3 class="card-title">Visualisez toutes les catégories de produits</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -49,24 +50,25 @@
                                     </thead>
                                     <tbody>
                                     @foreach ($categories as $category)
-                                    <tr>
-                                        <td>
-                                            {{ $category->id }}
-                                        </td>
-                                        <td>
-                                            {{ $category->category_name }}
-                                        </td>
-                                        <td>
-                                            <span class="d-flex flex-row">
-                                                <a href="#" class="btn btn-primary mx-2">
-                                                    <i class="fas fa-edit"></i>
-                                                </a>
-                                                <a href="#" id="delete" class="btn btn-danger">
-                                                    <i class="fa fa-times"></i>
-                                                </a>
-                                            </span>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td>
+                                                {{ $increment }}
+                                            </td>
+                                            <td>
+                                                {{ $category->category_name }}
+                                            </td>
+                                            <td>
+                                                <span class="d-flex flex-row">
+                                                    <a href="#" class="btn btn-primary mx-2">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                    <a href="#" id="delete" class="btn btn-danger">
+                                                        <i class="fa fa-times"></i>
+                                                    </a>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        {{ Form::hidden('', $increment = $increment + 1) }}
                                     @endforeach
                                     </tbody>
                                     <tfoot>
@@ -121,7 +123,7 @@
             $(document).on('click', '#delete', function (e) {
                e.preventDefault();
                var link = $(this).attr('href');
-               bootbox.confirm('Do you really want to delete this element ?', function (confirmed) {
+               bootbox.confirm('Voulez-vous supprimer cette catégorie ?', function (confirmed) {
                    if (confirmed) {
                        window.location.href = link;
                    };
