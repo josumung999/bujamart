@@ -31,32 +31,60 @@
                             <div class="card-header">
                                 <h3 class="card-title">Créer un Produit</h3>
                             </div>
+                            @if (Session::has('status'))
+                                <div class="alert alert-success mx-2 my-2">
+                                    {{ Session::get('status') }}
+                                </div>
+                            @endif
+
+                            @if (count($errors) > 0)
+                                    <div class="alert alert-danger mx-2 my-2">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>
+                                                    {{ $error }}
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                            @endif
+
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form id="quickForm">
+                            {{-- <form> --}}
+                            {!! Form::open(['action' => 'App\Http\Controllers\ProductController@saveproduct', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                                {{ csrf_field() }}
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="product_name">Nom du produit</label>
-                                        <input type="text" name="product_name" class="form-control" id="product_name" placeholder="Nom du produit">
+                                        {{-- <labelfor="product_name">Nom du produit</label> --}}
+                                        {{-- <inputtype="text"name="product_name"class="form-control"id="product_name"placeholder="Nomduproduit"> --}}
+                                        {{ Form::label('', 'Nom du produit', ['for' => 'product_name']) }}
+                                        {{ Form::text('product_name', '', ['class' => 'form-control', 'id' => 'product_name', 'placeholder' => 'Nom du produit']) }}
                                     </div>
                                     <div class="form-group">
-                                        <label for="product_description">Description du produit</label>
-                                        <input type="text" name="product_description" class="form-control" id="product_description" placeholder="Description du produit">
+                                        {{-- <labelfor="product_description">Descriptionduproduit</label> --}}
+                                        {{-- <textareatype="text"name="product_description"class="form-control"id="product_description"placeholder="Descriptionduproduit"></textarea> --}}
+                                        {{ Form::label('', 'Description du produit', ['for' => 'product_description']) }}
+                                        {{ Form::text('product_description', '', ['class' => 'form-control', 'id' => 'product_description', 'placeholder' => 'Description du produit']) }}
                                     </div>
                                     <div class="form-group">
-                                        <label for="product_price">Prix du Produit</label>
-                                        <input type="text" name="product_price" class="form-control" id="product_price" placeholder="Prix du produit">
+                                        {{-- <labelfor="product_price">PrixduProduit</label> --}}
+                                        {{-- <inputtype="text"name="product_price"class="form-control"id="product_price"placeholder="Prixduproduit"> --}}
+                                        {{ Form::label('', 'Prix du produit', ['for' => 'product_price']) }}
+                                        {{ Form::text('product_price', '', ['class' => 'form-control', 'id' => 'product_price', 'placeholder' => 'Prix du produit']) }}
                                     </div>
                                     <div class="form-group">
-                                      <label for="product_category">Catégorie du produit</label>
-                                      <input type="text" name="product_category" class="form-control" id="product_category" placeholder="Catégorie produit">
+                                      {{-- <labelfor="product_category">Catégorieduproduit</label> --}}
+                                      {{ Form::select('product_category', $categories, null, ['placeholder' => 'Select Category', 'class' => 'form-control select2']) }}
                                     </div>
                                     <div class="form-group">
                                         <label for="product_image">Image du Produit</label>
                                           <div class="input-group">
                                             <div class="custom-file">
-                                                <input type="file" name="product_image" class="custom-file-input" id="exampleInputFile">
-                                                <label for="exampleInputFile" class="custom-file-label">Selectionnez une image</label>
+                                                {{-- <input type="file" name="product_image" class="custom-file-input" id="exampleInputFile">
+                                                <label for="exampleInputFile" class="custom-file-label">Selectionnez une image</label> --}}
+                                                {{ Form::file('product_image', ['class' => 'custom-file-input', 'id' => 'product_image',]) }}
+                                                {{ Form::label('', 'Selectionnez une image', ['class' => 'custom-file-label', 'for' => 'product_image']) }}
                                             </div>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">Télécharger</span>
@@ -66,9 +94,11 @@
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-warning">Enregistrer</button>
+                                    {{-- <buttontype="submit"class="btnbtn-warning">Enregistrer</button> --}}
+                                    {{ Form::submit('Enregistrer', ['class' => 'btn btn-warning']) }}
                                 </div>
-                            </form>
+                            {!! Form::close() !!}
+                            {{-- </form> --}}
                         </div>
                         <!-- /.card -->
                     </div>
