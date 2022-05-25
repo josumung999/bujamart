@@ -59,10 +59,9 @@
                                                     {{ $increment }}
                                                 </td>
                                                 <td>
-                                                    {{ $product->product_image }}
-                                                    {{--<div class="image">
-                                                        <img src="backend/dist/img/user2-160x160.jpg" class="img-circle elevation-2" width="40" height="40" alt="User Image">
-                                                    </div>--}}
+                                                    <div class="image">
+                                                        <img src="/storage/product_images/{{ $product->product_image }}" class="img-circle elevation-2" width="40" height="40" alt="User Image">
+                                                    </div>
                                                 </td>
                                                 <td>
                                                     {{ $product->product_name }}
