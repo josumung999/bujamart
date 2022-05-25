@@ -53,6 +53,8 @@ class ProductController extends Controller
     }
 
     public function products() {
-        return view('admin.products');
+        $products = Product::All();
+
+        return view('admin.products')->with('products', $products);
     }
 }

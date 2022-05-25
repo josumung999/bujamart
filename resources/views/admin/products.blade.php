@@ -10,6 +10,7 @@
 @endsection
 
 @section('content')
+    {{ Form::hidden('', $increment = 1) }}
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -52,70 +53,46 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td> 1</td>
-                                            <td>
-                                                <div class="image">
-                                                    <img src="backend/dist/img/user2-160x160.jpg" class="img-circle elevation-2" width="40" height="40" alt="User Image">
-                                                </div>
-                                            </td>
-                                            <td>Banane</td>
-                                            <td>
-                                                Bananes Cultivées à Rumonge
-                                            </td>
-                                            <td>
-                                              1.000 BIF
-                                            </td>
-                                            
-                                            <td>
-                                              Fruits
-                                            </td>
-                                            <td>
-                                                <span class="d-flex flex-row">
-                                                    <a href="#" class="btn btn-warning btn-sm mx-2">
-                                                        Activer
-                                                    </a>
-                                                    <a href="#" class="btn btn-primary btn-sm mx-2">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
-                                                    <a href="#" id="delete" class="btn btn-danger btn-sm">
-                                                        <i class="fa fa-times"></i>
-                                                    </a>
-                                                </span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                          <td> 1</td>
-                                          <td>
-                                              <div class="image">
-                                                  <img src="backend/dist/img/user2-160x160.jpg" class="img-circle elevation-2" width="40" height="40" alt="User Image">
-                                              </div>
-                                          </td>
-                                          <td>1 Kg de Viande de Boeuf</td>
-                                          <td>
-                                              Viande fraiche en provenance de Kirundo
-                                          </td>
-                                          <td>
-                                            12,000 BIF
-                                          </td>
-                                          
-                                          <td>
-                                            Viande Rouge
-                                          </td>
-                                          <td>
-                                              <span class="d-flex flex-row">
-                                                  <a href="#" class="btn bg-green btn-sm mx-2">
-                                                      Désactiver
-                                                  </a>
-                                                  <a href="#" class="btn btn-primary btn-sm mx-2">
-                                                      <i class="fas fa-edit"></i>
-                                                  </a>
-                                                  <a href="#" id="delete" class="btn btn-danger btn-sm">
-                                                      <i class="fa fa-times"></i>
-                                                  </a>
-                                              </span>
-                                          </td>
-                                      </tr>
+                                        @foreach ($products as $product)
+                                            <tr>
+                                                <td>
+                                                    {{ $increment }}
+                                                </td>
+                                                <td>
+                                                    {{ $product->product_image }}
+                                                    {{--<div class="image">
+                                                        <img src="backend/dist/img/user2-160x160.jpg" class="img-circle elevation-2" width="40" height="40" alt="User Image">
+                                                    </div>--}}
+                                                </td>
+                                                <td>
+                                                    {{ $product->product_name }}
+                                                </td>
+                                                <td>
+                                                    {{ substr($product->product_description, 0, 15 ); }} ...
+                                                </td>
+                                                <td>
+                                                    {{ $product->product_price }} BIF
+                                                </td>
+                                                
+                                                <td>
+                                                    {{ $product->product_category }}
+                                                </td>
+                                                <td>
+                                                    <span class="d-flex flex-row">
+                                                        <a href="#" class="btn btn-warning btn-sm mx-2">
+                                                            Activer
+                                                        </a>
+                                                        <a href="#" class="btn btn-primary btn-sm mx-2">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+                                                        <a href="#" id="delete" class="btn btn-danger btn-sm">
+                                                            <i class="fa fa-times"></i>
+                                                        </a>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            {{ Form::hidden('', $increment = $increment + 1) }}
+                                        @endforeach
                                     </tbody>
                                     <tfoot>
                                     <tr>
