@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
     public function addproduct() {
-        $categories = Category::All()->pluck('category_name');
+        $categories = Category::All()->pluck('category_name', 'category_name');
 
         return view('admin.addproduct')->with('categories', $categories);
     }
@@ -19,10 +20,36 @@ class ProductController extends Controller
             'product_description' => 'required',
             'product_price' => 'required',
             'product_category' => 'required',
-            'product_image' => 'image|nullable|1999',
+            'product_image' => 'image|nullable|max:1999',
         ]);
 
-        print($request->input('product_category'));
+        if($request->hasFile('product_image')) {
+            // 1 :get file name with extension
+            $fileNameWithExt = $request->file('product_image')->getClientOriginalName();
+            // 2 : get just file name
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            // 3 : get just file extension
+            $extension = $request->file('product_image')->getClientOriginalExtension();
+            // 4 : file name to store
+            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+
+            // upload image
+            $path = $request->file('product_image')->storeAs('public/product_images', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'noimage.jpg';
+        }
+
+        $product = new Product();
+
+        $product->product_name = $request->input('product_name');
+        $product->product_description = $request->input('product_description');
+        $product->product_price = $request->input('product_price');
+        $product->product_category = $request->input('product_category');
+        $product->product_image = $fileNameToStore;
+
+        $product->save();
+
+        return back()->with('status', 'Le Produit a été créé avec succès');
     }
 
     public function products() {
