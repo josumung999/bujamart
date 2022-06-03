@@ -54,6 +54,8 @@ Route::get('/sliders', [\App\Http\Controllers\SliderController::class, 'sliders'
 // Routes for Products
 Route::get('/addproduct', [\App\Http\Controllers\ProductController::class, 'addproduct']);
 Route::post('/saveproduct', [\App\Http\Controllers\ProductController::class, 'saveproduct']);
+Route::get('/edit-product/{id}', [\App\Http\Controllers\ProductController::class, 'edit_product']);
+Route::post('/updateproduct', [\App\Http\Controllers\ProductController::class, 'updateproduct']);
 Route::get('/products', [\App\Http\Controllers\ProductController::class, 'products']);
 
 // Routes for orders

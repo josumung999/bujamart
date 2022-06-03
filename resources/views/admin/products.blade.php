@@ -78,10 +78,10 @@
                                                 </td>
                                                 <td>
                                                     <span class="d-flex flex-row">
-                                                        <a href="#" class="btn btn-warning btn-sm mx-2">
-                                                            Activer
+                                                        <a href="#" class="btn btn-outline-success btn-sm mx-2">
+                                                            Désactiver
                                                         </a>
-                                                        <a href="#" class="btn btn-primary btn-sm mx-2">
+                                                        <a href="{{ url('/edit-product/'.$product->id) }}" class="btn btn-primary btn-sm mx-2">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
                                                         <a href="#" id="delete" class="btn btn-danger btn-sm">

@@ -8,6 +8,12 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
+    public function products() {
+        $products = Product::All();
+
+        return view('admin.products')->with('products', $products);
+    }
+
     public function addproduct() {
         $categories = Category::All()->pluck('category_name', 'category_name');
 
@@ -52,9 +58,14 @@ class ProductController extends Controller
         return back()->with('status', 'Le Produit a été créé avec succès');
     }
 
-    public function products() {
-        $products = Product::All();
+    public function edit_product($id) {
+        $product = Product::find($id);
+        $categories = Category::All()->pluck('category_name', 'category_name');
 
-        return view('admin.products')->with('products', $products);
+        return view('admin.edit_product')->with('product', $product)->with('categories', $categories);
+    }
+
+    public function updateproduct(Request $request) {
+
     }
 }
