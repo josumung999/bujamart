@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Category;
 use App\Models\Product;
 
@@ -66,6 +67,45 @@ class ProductController extends Controller
     }
 
     public function updateproduct(Request $request) {
+        
+        $this->validate($request, [
+            'product_name' => 'required',
+            'product_description' => 'required',
+            'product_price' => 'required',
+            'product_category' => 'required',
+            'product_image' => 'image|nullable|max:1999',
+        ]);
 
+        $product = Product::find($request->input('id'));
+
+        $product->product_name = $request->input('product_name');
+        $product->product_description = $request->input('product_description');
+        $product->product_price = $request->input('product_price');
+        $product->product_category = $request->input('product_category');
+
+        if($request->hasFile('product_image')) {
+            // 1 :get file name with extension
+            $fileNameWithExt = $request->file('product_image')->getClientOriginalName();
+            // 2 : get just file name
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            // 3 : get just file extension
+            $extension = $request->file('product_image')->getClientOriginalExtension();
+            // 4 : file name to store
+            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+
+            // upload image
+            $path = $request->file('product_image')->storeAs('public/product_images', $fileNameToStore);
+
+            // Check if image is not our noimage file
+            if($product->product_image != 'noimage.jpg') {
+                Storage::delete(['public/product_images/'.$product->product_image]);
+            }
+
+            $product->product_image = $fileNameToStore;
+        }
+
+        $product->update();
+
+        return redirect('/products')->with('status', 'Le Produit a été mis à jour avec succès');
     }
 }

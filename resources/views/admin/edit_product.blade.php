@@ -56,6 +56,7 @@
                                 {{ csrf_field() }}
                                 <div class="card-body">
                                     <div class="form-group">
+                                      {{ Form::hidden('id', $product->id) }}
                                         {{-- <labelfor="product_name">Nom du produit</label> --}}
                                         {{-- <inputtype="text"name="product_name"class="form-control"id="product_name"placeholder="Nomduproduit"> --}}
                                         {{ Form::label('', 'Nom du produit', ['for' => 'product_name']) }}
@@ -96,7 +97,7 @@
                                 <!-- /.card-body -->
                                 <div class="card-footer">
                                     {{-- <buttontype="submit"class="btnbtn-warning">Enregistrer</button> --}}
-                                    {{ Form::submit('Enregistrer', ['class' => 'btn btn-warning']) }}
+                                    {{ Form::submit('Mettre à Jour', ['class' => 'btn btn-warning']) }}
                                 </div>
                             {!! Form::close() !!}
                             {{-- </form> --}}

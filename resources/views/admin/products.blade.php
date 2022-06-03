@@ -38,6 +38,11 @@
                             <div class="card-header">
                                 <h3 class="card-title">Tous les Produits</h3>
                             </div>
+                            @if (Session::has('status'))
+                                <div class="alert alert-success mx-2 my-2">
+                                    {{ Session::get('status') }}
+                                </div>
+                            @endif
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <table id="example2" class="table table-bordered table-hover">
