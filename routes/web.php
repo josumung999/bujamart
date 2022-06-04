@@ -57,6 +57,7 @@ Route::post('/saveproduct', [\App\Http\Controllers\ProductController::class, 'sa
 Route::get('/edit-product/{id}', [\App\Http\Controllers\ProductController::class, 'edit_product']);
 Route::post('/updateproduct', [\App\Http\Controllers\ProductController::class, 'updateproduct']);
 Route::get('/products', [\App\Http\Controllers\ProductController::class, 'products']);
+Route::get('/delete-product/{id}', [\App\Http\Controllers\ProductController::class, 'delete_product']);
 
 // Routes for orders
 Route::get('/orders', [\App\Http\Controllers\OrderController::class, 'orders']);

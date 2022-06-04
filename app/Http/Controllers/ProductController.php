@@ -108,4 +108,16 @@ class ProductController extends Controller
 
         return redirect('/products')->with('status', 'Le Produit a été mis à jour avec succès');
     }
+
+    public function delete_product($id) {
+        $product = Product::find($id);
+        // Check if image is not our noimage file
+        if($product->product_image != 'noimage.jpg') {
+            Storage::delete(['public/product_images/'.$product->product_image]);
+        }
+
+        $product->delete();
+
+        return back()->with('status', 'Le produit a été supprimé avec succès');
+    }
 }

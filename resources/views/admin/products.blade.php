@@ -89,7 +89,7 @@
                                                         <a href="{{ url('/edit-product/'.$product->id) }}" class="btn btn-primary btn-sm mx-2">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
-                                                        <a href="#" id="delete" class="btn btn-danger btn-sm">
+                                                        <a href="{{ url('/delete-product/'.$product->id) }}" id="delete" class="btn btn-danger btn-sm">
                                                             <i class="fa fa-times"></i>
                                                         </a>
                                                     </span>
