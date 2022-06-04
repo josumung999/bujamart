@@ -60,6 +60,7 @@
                                                 <td>
                                                     <div class="image">
                                                         <img src="/storage/product_images/{{ $slider->slider_image }}" class="img-circle elevation-2" width="40" height="40" alt="User Image">
+                                                        {{-- it's display products ! --}}
                                                     </div>
                                                 </td>
                                                 <td>
