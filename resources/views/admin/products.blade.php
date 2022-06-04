@@ -83,9 +83,15 @@
                                                 </td>
                                                 <td>
                                                     <span class="d-flex flex-row">
-                                                        <a href="#" class="btn btn-outline-success btn-sm mx-2">
-                                                            Désactiver
-                                                        </a>
+                                                        @if ($product->status == 1)
+                                                            <a href="{{ url('/unactivate-product/'.$product->id) }}" class="btn btn-outline-success btn-sm mx-2">
+                                                                Désactiver
+                                                            </a> 
+                                                        @else
+                                                            <a href="{{ url('/activate-product/'.$product->id) }}" class="btn btn-warning btn-sm mx-2">
+                                                                Activer
+                                                            </a>
+                                                        @endif
                                                         <a href="{{ url('/edit-product/'.$product->id) }}" class="btn btn-primary btn-sm mx-2">
                                                             <i class="fas fa-edit"></i>
                                                         </a>

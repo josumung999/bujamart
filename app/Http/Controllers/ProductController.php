@@ -121,4 +121,22 @@ class ProductController extends Controller
 
         return back()->with('status', 'Le produit a été supprimé avec succès');
     }
+
+    public function activate_product($id) {
+        $product = Product::find($id);
+
+        $product->status = 1;
+        $product->update();
+
+        return back()->with('status', 'Produit activé!');
+    }
+
+    public function unactivate_product($id) {
+        $product = Product::find($id);
+
+        $product->status = 0;
+        $product->update();
+
+        return back()->with('status', 'Produit désactivé!');
+    }
 }
