@@ -31,6 +31,23 @@
                             <div class="card-header">
                                 <h3 class="card-title">Créer un Slider</h3>
                             </div>
+                            @if (Session::has('status'))
+                                <div class="alert alert-success mx-2 my-2">
+                                    {{ Session::get('status') }}
+                                </div>
+                            @endif
+
+                            @if (count($errors) > 0)
+                                    <div class="alert alert-danger mx-2 my-2">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>
+                                                    {{ $error }}
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                            @endif
                             <!-- /.card-header -->
                             <!-- form start -->
                             {{-- <formid="quickForm"> --}}
@@ -115,11 +132,11 @@
                         slider_title: true,
                     },
                     slider_description: {
-                        required: true,
+                        required: false,
                         slider_description: true,
                     },
                     slider_link: {
-                        required: true,
+                        required: false,
                         slider_link: true,
                     },
                     slider_image: {
@@ -131,14 +148,6 @@
                     slider_title: {
                         required: "Le titre du Slider est obligatoire",
                         category_name: "Le titre du Slider est obligatoire"
-                    },
-                    slider_description: {
-                        required: "La description du Slider est obligatoire",
-                        slider_description: "La description du Slider est obligatoire"
-                    },
-                    slider_link: {
-                        required: "Le lien du Slider est obligatoire",
-                        slider_link: "Le lien du Slider est obligatoire"
                     },
                     slider_image: {
                         required: "L'image du Slider est obligatoire",
