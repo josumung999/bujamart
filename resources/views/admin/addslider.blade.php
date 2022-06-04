@@ -33,26 +33,36 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form id="quickForm">
+                            {{-- <formid="quickForm"> --}}
+                            {!! Form::open(['action' => 'App\Http\Controllers\SliderController@saveslider', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'id' => 'quickForm']) !!}
+                                {{ csrf_field() }}
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="slider_title">Titre du Slider</label>
-                                        <input type="text" name="slider_title" class="form-control" id="slider_title" placeholder="Nom du Slider">
+                                        {{-- <labelfor="slider_title">TitreduSlider</label> --}}
+                                        {{-- <inputtype="text"name="slider_title"class="form-control"id="slider_title"placeholder="NomduSlider"> --}}
+                                        {{ Form::label('', 'Titre du slider', ['for' => 'slider_title']) }}
+                                        {{ Form::text('slider_title', '', ['class' => 'form-control', 'id' => 'slider_title', 'placeholder' => 'Titre du slider']) }}
                                     </div>
                                     <div class="form-group">
-                                        <label for="slider_description">Description du Slider</label>
-                                        <input type="text" name="slider_description" class="form-control" id="slider_description" placeholder="Description du Slider">
+                                        {{-- <labelfor="slider_description">DescriptionduSlider</label> --}}
+                                        {{-- <inputtype="text"name="slider_description"class="form-control"id="slider_description"placeholder="DescriptionduSlider"> --}}
+                                        {{ Form::label('', 'Description du slider', ['for' => 'slider_description']) }}
+                                        {{ Form::text('slider_description', '', ['class' => 'form-control', 'id' => 'slider_description', 'placeholder' => 'Description du slider']) }}
                                     </div>
                                     <div class="form-group">
-                                        <label for="slider_link">Lien du Slider</label>
-                                        <input type="text" name="slider_link" class="form-control" id="slider_link" placeholder="Lien du Slider">
+                                        {{-- <labelfor="slider_link">LienduSlider</label> --}}
+                                        {{-- <inputtype="text"name="slider_link"class="form-control"id="slider_link"placeholder="LienduSlider"> --}}
+                                        {{ Form::label('', 'Lien du slider', ['for' => 'slider_link']) }}
+                                        {{ Form::text('slider_link', '', ['class' => 'form-control', 'id' => 'slider_link', 'placeholder' => 'Lien du slider']) }}
                                     </div>
                                     <div class="form-group">
                                         <label for="slider_link">Image du Slider</label>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input type="file" name="slider_image" class="custom-file-input" id="exampleInputFile">
-                                                <label for="exampleInputFile" class="custom-file-label">Selectionnez une image</label>
+                                                {{-- <inputtype="file"name="slider_image"class="custom-file-input"id="exampleInputFile"> --}}
+                                                {{-- <labelfor="exampleInputFile"class="custom-file-label">Selectionnezuneimage</label> --}}
+                                                {{ Form::file('slider_image', ['class' => 'custom-file-input', 'id' => 'slider_image',]) }}
+                                                {{ Form::label('', 'Selectionnez une image', ['class' => 'custom-file-label', 'for' => 'slider_image']) }}
                                             </div>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">Télécharger</span>
@@ -62,9 +72,11 @@
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-warning">Enregistrer</button>
+                                    {{-- <buttontype="submit"class="btnbtn-warning">Enregistrer</button> --}}
+                                    {{ Form::submit('Enregistrer', ['class' => 'btn btn-warning']) }}
                                 </div>
-                            </form>
+                            {!! Form::close() !!}
+                            {{-- </form> --}}
                         </div>
                         <!-- /.card -->
                     </div>
