@@ -59,7 +59,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="image">
-                                                        <img src="/storage/product_images/{{ $slider->slider_image }}" class="img-circle elevation-2" width="40" height="40" alt="User Image">
+                                                        <img src="/storage/slider_images/{{ $slider->slider_image }}" class="img-circle elevation-2" width="40" height="40" alt="{{ $slider->slider_title }}">
                                                         {{-- it's display sliders ! --}}
                                                     </div>
                                                 </td>
