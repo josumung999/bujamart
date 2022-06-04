@@ -44,6 +44,8 @@ class SliderController extends Controller
     }
 
     public function sliders() {
-        return view('admin.sliders');
+        $sliders = Slider::All();
+
+        return view('admin.sliders')->with('sliders', $sliders);
     }
 }

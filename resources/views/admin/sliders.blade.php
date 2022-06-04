@@ -10,6 +10,7 @@
 @endsection
 
 @section('content')
+    {{ Form::hidden('', $increment = 1) }}
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -46,62 +47,46 @@
                                         <th>Image</th>
                                         <th>Titre</th>
                                         <th>Description</th>
+                                        <th>Lien</th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td> 1</td>
-                                            <td>
-                                                <div class="image">
-                                                    <img src="backend/dist/img/user2-160x160.jpg" class="img-circle elevation-2" width="40" height="40" alt="User Image">
-                                                </div>
-                                            </td>
-                                            <td>Fruits et Legumes</td>
-                                            <td>
-                                                Tous Vos legumes préférés à porté du clic
-                                            </td>
-                                            <td>
-                                                <span class="d-flex flex-row">
-                                                    <a href="#" class="btn btn-warning btn-sm mx-2">
-                                                        Activer
-                                                    </a>
-                                                    <a href="#" class="btn btn-primary btn-sm mx-2">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
-                                                    <a href="#" id="delete" class="btn btn-danger btn-sm">
-                                                        <i class="fa fa-times"></i>
-                                                    </a>
-                                                </span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td> 2</td>
-                                            <td>
-                                                <div class="image">
-                                                    <img src="backend/dist/img/user2-160x160.jpg" class="img-circle elevation-2" width="40" height="40" alt="User Image">
-                                                </div>
-                                            </td>
-                                            <td>Viandes et Poissons Frais</td>
-                                            <td>
-                                                Commandez vos charcuteries et poissons de meilleure qualité chez nous
-                                            </td>
-                                            <td>
-                                                <span class="d-flex flex-row">
+                                        @foreach ($sliders as $slider)
+                                            <tr>
+                                                <td>
+                                                    {{ $increment }}
+                                                </td>
+                                                <td>
+                                                    <div class="image">
+                                                        <img src="/storage/product_images/{{ $slider->slider_image }}" class="img-circle elevation-2" width="40" height="40" alt="User Image">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    {{ $slider->slider_title }}
+                                                </td>
+                                                <td>
+                                                    {{ $slider->slider_description }}
+                                                </td>
+                                                <td>
+                                                    {{ $slider->slider_link }}
+                                                </td>
+                                                <td>
                                                     <span class="d-flex flex-row">
-                                                    <a href="#" class="btn bg-green btn-sm mx-2">
-                                                        Désactiver
-                                                    </a>
-                                                    <a href="#" class="btn btn-primary btn-sm mx-2">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
-                                                    <a href="#" id="delete" class="btn btn-danger btn-sm">
-                                                        <i class="fa fa-times"></i>
-                                                    </a>
-                                                </span>
-                                                </span>
-                                            </td>
-                                        </tr>
+                                                        <a href="#" class="btn btn-warning btn-sm mx-2">
+                                                            Activer
+                                                        </a>
+                                                        <a href="#" class="btn btn-primary btn-sm mx-2">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+                                                        <a href="#" id="delete" class="btn btn-danger btn-sm">
+                                                            <i class="fa fa-times"></i>
+                                                        </a>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            {{ Form::hidden('', $increment = $increment + 1) }}
+                                        @endforeach
                                     </tbody>
                                     <tfoot>
                                     <tr>
@@ -109,6 +94,7 @@
                                         <th>Image</th>
                                         <th>Titre</th>
                                         <th>Description</th>
+                                        <th>Lien</th>
                                         <th>Actions</th>
                                     </tr>
                                     </tfoot>
