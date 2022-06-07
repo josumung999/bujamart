@@ -80,11 +80,11 @@
                                                 <td>
                                                     <span class="d-flex flex-row">
                                                         @if ($slider->status == 1)
-                                                            <a href="#" class="btn btn-outline-success btn-sm mx-2">
+                                                            <a href="{{ url('/unactivate-slider/'.$slider->id) }}" class="btn btn-outline-success btn-sm mx-2">
                                                                 Désactiver
                                                             </a>
                                                         @else
-                                                            <a href="#" class="btn btn-warning btn-sm mx-2">
+                                                            <a href="{{ url('/unactivate-slider/'.$slider->id) }}" class="btn btn-warning btn-sm mx-2">
                                                                 Activer
                                                             </a>
                                                         @endif
