@@ -77,7 +77,7 @@
                                                         <a href="#" class="btn btn-warning btn-sm mx-2">
                                                             Activer
                                                         </a>
-                                                        <a href="#" class="btn btn-primary btn-sm mx-2">
+                                                        <a href="{{ url('/edit-slider/'.$slider->id) }}" class="btn btn-primary btn-sm mx-2">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
                                                         <a href="#" id="delete" class="btn btn-danger btn-sm">

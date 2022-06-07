@@ -7,6 +7,12 @@ use App\Models\Slider;
 
 class SliderController extends Controller
 {
+    public function sliders() {
+        $sliders = Slider::All();
+
+        return view('admin.sliders')->with('sliders', $sliders);
+    }
+
     public function add_slider() {
         return view('admin.addslider');
     }
@@ -43,9 +49,12 @@ class SliderController extends Controller
         return back()->with('status', 'Le Slider a été créé avec succès');
     }
 
-    public function sliders() {
-        $sliders = Slider::All();
+    public function edit_slider() {
+        return view('admin.edit_slider');
+    }
 
-        return view('admin.sliders')->with('sliders', $sliders);
+    public function updateslider($id) {
+
+        
     }
 }
