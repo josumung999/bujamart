@@ -102,4 +102,23 @@ class SliderController extends Controller
 
         return back()->with('status', 'Le Slider a été supprimé');
     }
+
+
+    public function activate_slider($id) {
+        $slider = Slider::find($id);
+
+        $slider->status = 1;
+        $slider->update();
+
+        return back()->with('status', 'Slider Activé !');
+    }
+
+    public function unactivate_slider($id) {
+        $slider = Slider::find($id);
+
+        $slider->status = 0;
+        $slider->update();
+
+        return back()->with('status', 'Slider Désactivé !');
+    }
 }

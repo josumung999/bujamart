@@ -84,7 +84,7 @@
                                                                 Désactiver
                                                             </a>
                                                         @else
-                                                            <a href="{{ url('/unactivate-slider/'.$slider->id) }}" class="btn btn-warning btn-sm mx-2">
+                                                            <a href="{{ url('/activate-slider/'.$slider->id) }}" class="btn btn-warning btn-sm mx-2">
                                                                 Activer
                                                             </a>
                                                         @endif
