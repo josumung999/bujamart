@@ -55,22 +55,23 @@
                                 {{ csrf_field() }}
                                 <div class="card-body">
                                     <div class="form-group">
+                                      {{ Form::hidden('id', $slider->id) }}
                                         {{-- <labelfor="slider_title">TitreduSlider</label> --}}
                                         {{-- <inputtype="text"name="slider_title"class="form-control"id="slider_title"placeholder="NomduSlider"> --}}
                                         {{ Form::label('', 'Titre du slider', ['for' => 'slider_title']) }}
-                                        {{ Form::text('slider_title', '', ['class' => 'form-control', 'id' => 'slider_title', 'placeholder' => 'Titre du slider']) }}
+                                        {{ Form::text('slider_title', $slider->slider_title, ['class' => 'form-control', 'id' => 'slider_title', 'placeholder' => 'Titre du slider']) }}
                                     </div>
                                     <div class="form-group">
                                         {{-- <labelfor="slider_description">DescriptionduSlider</label> --}}
                                         {{-- <inputtype="text"name="slider_description"class="form-control"id="slider_description"placeholder="DescriptionduSlider"> --}}
                                         {{ Form::label('', 'Description du slider', ['for' => 'slider_description']) }}
-                                        {{ Form::text('slider_description', '', ['class' => 'form-control', 'id' => 'slider_description', 'placeholder' => 'Description du slider']) }}
+                                        {{ Form::text('slider_description', $slider->slider_description, ['class' => 'form-control', 'id' => 'slider_description', 'placeholder' => 'Description du slider']) }}
                                     </div>
                                     <div class="form-group">
                                         {{-- <labelfor="slider_link">LienduSlider</label> --}}
                                         {{-- <inputtype="text"name="slider_link"class="form-control"id="slider_link"placeholder="LienduSlider"> --}}
                                         {{ Form::label('', 'Lien du slider', ['for' => 'slider_link']) }}
-                                        {{ Form::text('slider_link', '', ['class' => 'form-control', 'id' => 'slider_link', 'placeholder' => 'Lien du slider']) }}
+                                        {{ Form::text('slider_link', $slider->slider_link, ['class' => 'form-control', 'id' => 'slider_link', 'placeholder' => 'Lien du slider']) }}
                                     </div>
                                     <div class="form-group">
                                         <label for="slider_link">Image du Slider</label>

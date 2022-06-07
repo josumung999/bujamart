@@ -49,11 +49,13 @@ class SliderController extends Controller
         return back()->with('status', 'Le Slider a été créé avec succès');
     }
 
-    public function edit_slider() {
-        return view('admin.edit_slider');
+    public function edit_slider($id) {
+        $slider = Slider::find($id);
+
+        return view('admin.edit_slider')->with('slider', $slider);
     }
 
-    public function updateslider($id) {
+    public function updateslider(Request $request) {
 
         
     }
