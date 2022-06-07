@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Slider;
 
 class SliderController extends Controller
@@ -56,7 +57,39 @@ class SliderController extends Controller
     }
 
     public function updateslider(Request $request) {
+        $this->validate($request, [
+            'slider_title' => 'required',
+            'slider_description' => 'required',
+            'slider_link' => 'required|active_url',
+            'slider_image' => 'image|nullable|max:1999',
+        ]);
 
-        
+        $slider = Slider::find($request->input('id'));
+
+        $slider->slider_title = $request->input('slider_title');
+        $slider->slider_description = $request->input('slider_description');
+        $slider->slider_link = $request->input('slider_link');
+
+        if($request->hasFile('slider_image')) {
+            // 1 :get file name with extension
+            $fileNameWithExt = $request->file('slider_image')->getClientOriginalName();
+            // 2 : get just file name
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            // 3 : get just file extension
+            $extension = $request->file('slider_image')->getClientOriginalExtension();
+            // 4 : file name to store
+            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+
+            // upload image
+            $path = $request->file('slider_image')->storeAs('public/slider_images', $fileNameToStore);
+
+            Storage::delete(['public/slider_images/'.$slider->slider_image]);
+
+            $slider->slider_image = $fileNameToStore;
+        }
+
+        $slider->update();
+
+        return redirect('/sliders')->with('status', 'Le Slider a été mis à jour avec succès');
     }
 }

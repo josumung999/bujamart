@@ -51,7 +51,7 @@ Route::get('/delete-category/{id}', [\App\Http\Controllers\CategoryController::c
 Route::get('/addslider', [\App\Http\Controllers\SliderController::class, 'add_slider']);
 Route::post('/saveslider', [\App\Http\Controllers\SliderController::class, 'saveslider']);
 Route::get('/edit-slider/{id}', [\App\Http\Controllers\SliderController::class, 'edit_slider']);
-Route::get('/updateslider', [\App\Http\Controllers\SliderController::class, 'updateslider']);
+Route::post('/updateslider', [\App\Http\Controllers\SliderController::class, 'updateslider']);
 Route::get('/sliders', [\App\Http\Controllers\SliderController::class, 'sliders']);
 
 // Routes for Products
