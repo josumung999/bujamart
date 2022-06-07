@@ -40,21 +40,25 @@ Route::get('/checkout', [\App\Http\Controllers\ClientController::class, 'checkou
 Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'admin']);
 
 // Routes for categories
+Route::get('/categories', [\App\Http\Controllers\CategoryController::class, 'categories']);
 Route::get('/addcategory', [\App\Http\Controllers\CategoryController::class, 'add_category']);
 Route::post('/savecategory', [\App\Http\Controllers\CategoryController::class, 'savecategory']);
 Route::get('/edit-category/{id}', [\App\Http\Controllers\CategoryController::class, 'edit_category']);
 Route::post('/updatecategory', [\App\Http\Controllers\CategoryController::class, 'updatecategory']);
-Route::get('/categories', [\App\Http\Controllers\CategoryController::class, 'categories']);
 Route::get('/delete-category/{id}', [\App\Http\Controllers\CategoryController::class, 'delete_category']);
 
 // Routes for sliders
+Route::get('/sliders', [\App\Http\Controllers\SliderController::class, 'sliders']);
 Route::get('/addslider', [\App\Http\Controllers\SliderController::class, 'add_slider']);
 Route::post('/saveslider', [\App\Http\Controllers\SliderController::class, 'saveslider']);
 Route::get('/edit-slider/{id}', [\App\Http\Controllers\SliderController::class, 'edit_slider']);
 Route::post('/updateslider', [\App\Http\Controllers\SliderController::class, 'updateslider']);
-Route::get('/sliders', [\App\Http\Controllers\SliderController::class, 'sliders']);
+Route::get('/delete-slider/{id}', [\App\Http\Controllers\SliderController::class, 'delete_slider']);
+Route::get('/activate-slider/{id}', [\App\Http\Controllers\SliderController::class, 'activate_slider']);
+Route::get('/unactivate-slider/{id}', [\App\Http\Controllers\SliderController::class, 'unactivate_slider']);
 
 // Routes for Products
+Route::get('/products', [\App\Http\Controllers\ProductController::class, 'products']);
 Route::get('/addproduct', [\App\Http\Controllers\ProductController::class, 'addproduct']);
 Route::post('/saveproduct', [\App\Http\Controllers\ProductController::class, 'saveproduct']);
 Route::get('/edit-product/{id}', [\App\Http\Controllers\ProductController::class, 'edit_product']);
@@ -62,7 +66,6 @@ Route::post('/updateproduct', [\App\Http\Controllers\ProductController::class, '
 Route::get('/delete-product/{id}', [\App\Http\Controllers\ProductController::class, 'delete_product']);
 Route::get('/activate-product/{id}', [\App\Http\Controllers\ProductController::class, 'activate_product']);
 Route::get('/unactivate-product/{id}', [\App\Http\Controllers\ProductController::class, 'unactivate_product']);
-Route::get('/products', [\App\Http\Controllers\ProductController::class, 'products']);
 
 // Routes for orders
 Route::get('/orders', [\App\Http\Controllers\OrderController::class, 'orders']);
