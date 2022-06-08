@@ -17,7 +17,10 @@ class ClientController extends Controller
     }
 
     public function shop() {
-        return view('client.shop');
+        $categories = Category::All();
+        $products = Product::All()->where('status', 1);
+
+        return view('client.shop')->with('products', $products)->with('categories', $categories);
     }
 
     public function cart() {

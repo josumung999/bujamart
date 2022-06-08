@@ -23,18 +23,9 @@
             <div class="row justify-content-center">
                 <div class="col-md-10 mb-5 text-center">
                     <ul class="product-category">
-                        <li><a href="#" class="active">Tous</a></li>
-                        <li><a href="#">Legumes</a></li>
-                        <li><a href="#">Fruits</a></li>
-                        <li><a href="#">Céréales</a></li>
-                        <li><a href="#">Viandes</a></li>
-                        <li><a href="#">Poissons</a></li>
-                        <li><a href="#">Farines</a></li>
-                        <li><a href="#">Boissons</a></li>
-                        <li><a href="#">Combustibles</a></li>
-                        <li><a href="#">Noix</a></li>
-                        <li><a href="#">Beurres</a></li>
-                        <li><a href="#">Huiles</a></li>
+                        @foreach ($categories as $category)
+                            <li><a href="{{ url('/category/'.$category->id) }}" class="">{{ $category->category_name }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
