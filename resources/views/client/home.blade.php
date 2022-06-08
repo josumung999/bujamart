@@ -8,35 +8,26 @@
 
     <section id="home-section" class="hero">
         <div class="home-slider owl-carousel">
-            <div class="slider-item" style="background-image: url(frontend/images/bg_1.jpg);">
-                <div class="overlay"></div>
-                <div class="container">
-                    <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+            @foreach ($sliders as $slider)
+                <div class="slider-item" style="background-image: url('/storage/slider_images/{{ $slider->slider_image }}');">
+                    <div class="overlay"></div>
+                    <div class="container">
+                        <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
 
-                        <div class="col-md-12 ftco-animate text-center">
-                            <h1 class="mb-2">Fruits &amp; Legumes Frais</h1>
-                            <h2 class="subheading mb-4">Tout ce qu'il vous faut comme fruits &amp; legumes</h2>
-                            <p><a href="#" class="btn btn-primary">Voir Plus</a></p>
+                            <div class="col-md-12 ftco-animate text-center">
+                                <h1 class="mb-2">
+                                    {{ $slider->slider_title }}
+                                </h1>
+                                <h2 class="subheading mb-4">
+                                    {{ $slider->slider_description }}
+                                </h2>
+                                <p><a href="{{ url($slider->slider_link) }}" class="btn btn-primary">Voir Plus</a></p>
+                            </div>
+
                         </div>
-
                     </div>
                 </div>
-            </div>
-
-            <div class="slider-item" style="background-image: url(frontend/images/bg_2.jpg);">
-                <div class="overlay"></div>
-                <div class="container">
-                    <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
-
-                        <div class="col-sm-12 ftco-animate text-center">
-                            <h1 class="mb-2">100% Bio &amp; Produits Locaux</h1>
-                            <h2 class="subheading mb-4">La qualité fait la différence chez BujaMart</h2>
-                            <p><a href="#" class="btn btn-primary">Nos Produits</a></p>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
 
