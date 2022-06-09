@@ -1,7 +1,7 @@
 @extends('client_layout.client')
 
 @section('title')
-    Nos Produits
+    {{ request()->is('shop') ? 'Nos Produits' : $category_name }}
 @endsection
 @section('content')
 

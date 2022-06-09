@@ -147,6 +147,6 @@ class ProductController extends Controller
         $products = Product::All()->where('product_category', $category_name)->where('status', 1);
         $categories = Category::All();
 
-        return view('client.shop')->with('products', $products)->with('categories', $categories);
+        return view('client.shop')->with('products', $products)->with('categories', $categories)->with('category_name', $category_name);
     }
 }
