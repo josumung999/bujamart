@@ -24,10 +24,10 @@
                 <div class="col-md-10 mb-5 text-center">
                     <ul class="product-category">
                         <li>
-                            <a href="" class="active">Tous</a>
+                            <a href="{{ url('/shop') }}" class="{{ request()->is('shop') ? 'active' : '' }}">Tous</a>
                         </li>
                         @foreach ($categories as $category)
-                            <li><a href="{{ url('/products/category/'.$category->category_name) }}" class="">{{ $category->category_name }}</a></li>
+                            <li><a href="{{ url('/products/category/'.$category->category_name) }}" class="{{ request()->is('products/category/'.$category->category_name) ? 'active' : '' }}">{{ $category->category_name }}</a></li>
                         @endforeach
                     </ul>
                 </div>
