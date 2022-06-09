@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Slider;
 use App\Models\Category;
 use App\Cart;
+use Session;
 
 class ClientController extends Controller
 {
@@ -37,7 +38,7 @@ class ClientController extends Controller
         // finally put cart in session
         Session::put('cart', $cart);
 
-        
+        dd(Session::get('cart'));
     }
 
     public function cart() {

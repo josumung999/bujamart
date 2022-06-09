@@ -30,7 +30,7 @@
       // check if the product already exist in cart
       if($this->items) {
         if(array_key_exists($product_id, $this->items)) {
-          $storedItem = $this->items($product_id);
+          $storedItem = $this->items[$product_id];
         }
       }
 
