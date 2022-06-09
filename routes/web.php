@@ -29,6 +29,7 @@ Route::get('/', [\App\Http\Controllers\ClientController::class, 'home']);
 Route::get('/shop', [\App\Http\Controllers\ClientController::class, 'shop']);
 Route::get('/addtocart/{id}', [\App\Http\Controllers\ClientController::class, 'addtocart']);
 Route::post('/update_qty/{id}', [\App\Http\Controllers\ClientController::class, 'update_qty']);
+Route::get('/remove_from_cart/{id}', [\App\Http\Controllers\ClientController::class, 'remove_from_cart']);
 Route::get('/cart', [\App\Http\Controllers\ClientController::class, 'cart']);
 Route::get('/checkout', [\App\Http\Controllers\ClientController::class, 'checkout']);
 

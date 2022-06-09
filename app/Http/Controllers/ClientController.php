@@ -51,9 +51,23 @@ class ClientController extends Controller
         return back();
     }
 
+    public function remove_from_cart($id) {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->removeItem($id);
+
+        if (count($cart->items) > 0) {
+            Session::put('cart', $cart);
+        } else {
+            Session::forget('cart');
+        }
+
+        return back();
+    }
+
     public function cart() {
         if(!Session::has('cart')) {
-            return redirect('/cart');
+            return view('client.cart');
         }
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         // If not create a new instance of the cart object

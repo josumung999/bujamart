@@ -15,7 +15,17 @@
             </div>
         </div>
     </div>
-    @if (Session::has('cart'))
+    @if (!Session::has('cart'))
+        <section class="ftco-section ftco-cart">
+            <div class="container">
+                <div class="d-flex justify-between items-center">
+                    <span>Aucun Produit dans le panier</span>
+                    <span>Acheter Maintenant</span>
+                </div>
+            </div>
+        </section>
+        
+    @else
         <section class="ftco-section ftco-cart">
             <div class="container">
                 <div class="row">
@@ -36,7 +46,11 @@
                                     <tbody>
                                         @foreach ($products as $product)
                                             <tr class="text-center">
-                                                <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+                                                <td class="product-remove">
+                                                    <a href="{{ url('remove_from_cart/'.$product['product_id']) }}">
+                                                        <span class="ion-ios-close"></span>
+                                                    </a>
+                                                </td>
 
                                                 <td class="image-prod"><div class="img" style="background-image:url('{{ asset('/storage/product_images/'.$product['product_image']) }}');"></div></td>
 
@@ -117,8 +131,6 @@
                 </div>
             </div>
         </section>
-    @else
-        <h1>Aucun Produit dans le Panier</h1>
     @endif
 
      <!-- End Content -->
