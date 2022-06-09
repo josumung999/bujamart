@@ -43,7 +43,14 @@ class ClientController extends Controller
     }
 
     public function cart() {
-        return view('client.cart');
+        if(!Session::has('cart')) {
+            return redirect('/cart');
+        }
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        // If not create a new instance of the cart object
+        $cart = new Cart($oldCart);
+
+        return view('client.cart', ['products' => $cart->items]);
     }
 
     public function checkout() {
