@@ -15,109 +15,111 @@
             </div>
         </div>
     </div>
-
-    <section class="ftco-section ftco-cart">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 ftco-animate">
-                    <div class="cart-list">
-                        @if (Session::has('cart'))
-                            <table class="table">
-                                <thead class="thead-primary">
-                                    <tr class="text-center">
-                                        <th>&nbsp;</th>
-                                        <th>&nbsp;</th>
-                                        <th>Nom du Produit</th>
-                                        <th>Prix</th>
-                                        <th>Quantité</th>
-                                        <th>Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($products as $product)
+    @if (Session::has('cart'))
+        <section class="ftco-section ftco-cart">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 ftco-animate">
+                        <div class="cart-list">
+                            
+                                <table class="table">
+                                    <thead class="thead-primary">
                                         <tr class="text-center">
-                                            <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+                                            <th>&nbsp;</th>
+                                            <th>&nbsp;</th>
+                                            <th>Nom du Produit</th>
+                                            <th>Prix</th>
+                                            <th>Quantité</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($products as $product)
+                                            <tr class="text-center">
+                                                <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
 
-                                            <td class="image-prod"><div class="img" style="background-image:url('{{ asset('/storage/product_images/'.$product['product_image']) }}');"></div></td>
+                                                <td class="image-prod"><div class="img" style="background-image:url('{{ asset('/storage/product_images/'.$product['product_image']) }}');"></div></td>
 
-                                            <td class="product-name">
-                                                <h3>{{ $product['product_name'] }}</h3>
-                                                <p>{{ $product['product_description'] }}</p>
-                                            </td>
-
-                                            <td class="price">{{ $product['product_price'] }} BIF</td>
-
-                                            <form action="{{ url('/update_qty/'.$product['product_id']) }}" method="POST">
-                                                <td class="quantity">
-                                                    <div class="input-group mb-3">
-                                                        <input type="text" name="quantity" class="quantity form-control input-number" value="{{ $product['qty'] }}" min="1" max="100">
-                                                        <input type="submit" value="Soumettre" class="btn btn-small btn-primary">
-                                                    </div>
+                                                <td class="product-name">
+                                                    <h3>{{ $product['product_name'] }}</h3>
+                                                    <p>{{ $product['product_description'] }}</p>
                                                 </td>
-                                            </form>
 
-                                            <td class="total">{{ $product['product_price'] * $product['qty'] }} BIF</td>
-                                        </tr><!-- END TR-->
-                                    @endforeach
-                                </tbody>
-                            </table>
-                                    
-                        @else
-                            <h1>Aucun Produit dans le Panier</h1>
-                        @endif
+                                                <td class="price">{{ $product['product_price'] }} BIF</td>
+
+                                                <form action="{{ url('/update_qty/'.$product['product_id']) }}" method="POST">
+                                                    {{ csrf_field() }}
+                                                    <td class="quantity">
+                                                        <div class="input-group mb-3">
+                                                            <input type="text" name="quantity" class="quantity form-control input-number" value="{{ $product['qty'] }}" min="1" max="100">
+                                                            <input type="submit" value="Soumettre" class="btn btn-small btn-primary">
+                                                        </div>
+                                                    </td>
+                                                </form>
+
+                                                <td class="total">{{ $product['product_price'] * $product['qty'] }} BIF</td>
+                                            </tr><!-- END TR-->
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                        
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-end">
+                    <div class="col-lg-6 mt-5 cart-wrap ftco-animate">
+                        <div class="cart-total mb-3">
+                            <h3>Coupon de Réduction</h3>
+                            <p>Veuillez Saisir votre bon de réduction si vous en avez</p>
+                            <form action="#" class="info">
+                                <div class="form-group">
+                                    <label for="">Code du Coupon</label>
+                                    <input type="text" class="form-control text-left px-3" placeholder="">
+                                </div>
+                            </form>
+                        </div>
+                        <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Appliquer</a></p>
+                    </div>
+                    <div class="col-lg-6 mt-5 cart-wrap ftco-animate">
+                        <div class="cart-total mb-3">
+                            <h3>Total du Panier</h3>
+                            <p class="d-flex">
+                                <span>Sous-Total</span>
+                                <span>
+                                    {{ Session::get('cart')->totalPrice }} BIF
+                                </span>
+                            </p>
+                            <p class="d-flex">
+                                <span>Livraison</span>
+                                @if (Session::get('cart')->totalPrice > 50000)
+                                <span>00 BIF</span> 
+                                @else
+                                    <span title="Nous faisons payer un montant forfaitaire pour les commande de moins de 50.000 BIF">3000 BIF</span>
+                                @endif
+                            </p>
+                            <p class="d-flex">
+                                <span>Reduction</span>
+                                <span>00 BIF</span>
+                            </p>
+                            <hr>
+                            <p class="d-flex total-price">
+                                <span>Total</span>
+                                @if (Session::get('cart')->totalPrice > 50000)
+                                <span>{{ Session::get('cart')->totalPrice }} BIF</span> 
+                                @else
+                                    <span>{{ Session::get('cart')->totalPrice + 3000 }} BIF</span>
+                                @endif
+                            </p>
+                        </div>
+                        <p><a href="{{ url('/checkout') }}" class="btn btn-primary py-3 px-4">Passer la Commande</a></p>
                     </div>
                 </div>
             </div>
-            <div class="row justify-content-end">
-                <div class="col-lg-6 mt-5 cart-wrap ftco-animate">
-                    <div class="cart-total mb-3">
-                        <h3>Coupon de Réduction</h3>
-                        <p>Veuillez Saisir votre bon de réduction si vous en avez</p>
-                        <form action="#" class="info">
-                            <div class="form-group">
-                                <label for="">Code du Coupon</label>
-                                <input type="text" class="form-control text-left px-3" placeholder="">
-                            </div>
-                        </form>
-                    </div>
-                    <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Appliquer</a></p>
-                </div>
-                <div class="col-lg-6 mt-5 cart-wrap ftco-animate">
-                    <div class="cart-total mb-3">
-                        <h3>Total du Panier</h3>
-                        <p class="d-flex">
-                            <span>Sous-Total</span>
-                            <span>
-                                {{ Session::get('cart')->totalPrice }} BIF
-                            </span>
-                        </p>
-                        <p class="d-flex">
-                            <span>Livraison</span>
-                            @if (Session::get('cart')->totalPrice > 50000)
-                            <span>00 BIF</span> 
-                            @else
-                                <span title="Nous faisons payer un montant forfaitaire pour les commande de moins de 50.000 BIF">3000 BIF</span>
-                            @endif
-                        </p>
-                        <p class="d-flex">
-                            <span>Reduction</span>
-                            <span>00 BIF</span>
-                        </p>
-                        <hr>
-                        <p class="d-flex total-price">
-                            <span>Total</span>
-                            @if (Session::get('cart')->totalPrice > 50000)
-                            <span>{{ Session::get('cart')->totalPrice }} BIF</span> 
-                            @else
-                                <span>{{ Session::get('cart')->totalPrice + 3000 }} BIF</span>
-                            @endif
-                        </p>
-                    </div>
-                    <p><a href="{{ url('/checkout') }}" class="btn btn-primary py-3 px-4">Passer la Commande</a></p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    @else
+        <h1>Aucun Produit dans le Panier</h1>
+    @endif
 
      <!-- End Content -->
 
