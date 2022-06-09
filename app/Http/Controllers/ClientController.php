@@ -42,6 +42,15 @@ class ClientController extends Controller
         return back();
     }
 
+    public function update_qty(Request $request, $id) {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->updateQty($request->id, $request->quantity);
+        Session::put('cart', $cart);
+
+        return redirect('/cart');
+    }
+
     public function cart() {
         if(!Session::has('cart')) {
             return redirect('/cart');

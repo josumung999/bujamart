@@ -47,11 +47,14 @@
 
                                             <td class="price">{{ $product['product_price'] }} BIF</td>
 
-                                            <td class="quantity">
-                                                <div class="input-group mb-3">
-                                                    <input type="text" name="quantity" class="quantity form-control input-number" value="{{ $product['qty'] }}" min="1" max="100">
-                                                </div>
-                                            </td>
+                                            <form action="{{ url('/update_qty/'.$product['product_id']) }}" method="POST">
+                                                <td class="quantity">
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" name="quantity" class="quantity form-control input-number" value="{{ $product['qty'] }}" min="1" max="100">
+                                                        <input type="submit" value="Soumettre" class="btn btn-small btn-primary">
+                                                    </div>
+                                                </td>
+                                            </form>
 
                                             <td class="total">{{ $product['product_price'] * $product['qty'] }} BIF</td>
                                         </tr><!-- END TR-->
