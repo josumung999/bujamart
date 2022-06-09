@@ -47,7 +47,7 @@
                     <a href="{{ url('/cart') }}" class="nav-link" title="Mon Panier">
                         <span class="icon-shopping_cart">
 
-                        </span>[0]
+                        </span>{{ Session::has('cart') ? '['.Session::get('cart')->totalQty.']' : '[0]' }}
                     </a>
                 </li>
             </ul>

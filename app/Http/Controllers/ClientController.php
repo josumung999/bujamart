@@ -38,7 +38,8 @@ class ClientController extends Controller
         // finally put cart in session
         Session::put('cart', $cart);
 
-        dd(Session::get('cart'));
+        //dd(Session::get('cart'));
+        return back();
     }
 
     public function cart() {
