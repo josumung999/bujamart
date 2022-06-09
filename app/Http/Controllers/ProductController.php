@@ -139,4 +139,14 @@ class ProductController extends Controller
 
         return back()->with('status', 'Produit désactivé!');
     }
+
+
+    // Functions to filter products by category
+    // Will be used on the shop page
+    public function view_products_by_category($category_name) {
+        $products = Product::All()->where('category_name', $category_name)->where('status', 1);
+        $categories = Category::All();
+
+        return view('client.shop')->with('products', $products)->with('categories', $categories);
+    }
 }

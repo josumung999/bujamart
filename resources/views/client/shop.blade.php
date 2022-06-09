@@ -27,7 +27,7 @@
                             <a href="" class="active">Tous</a>
                         </li>
                         @foreach ($categories as $category)
-                            <li><a href="{{ url('/category/'.$category->id) }}" class="">{{ $category->category_name }}</a></li>
+                            <li><a href="{{ url('/products/category/'.$category->category_name) }}" class="">{{ $category->category_name }}</a></li>
                         @endforeach
                     </ul>
                 </div>

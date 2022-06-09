@@ -66,6 +66,8 @@ Route::post('/updateproduct', [\App\Http\Controllers\ProductController::class, '
 Route::get('/delete-product/{id}', [\App\Http\Controllers\ProductController::class, 'delete_product']);
 Route::get('/activate-product/{id}', [\App\Http\Controllers\ProductController::class, 'activate_product']);
 Route::get('/unactivate-product/{id}', [\App\Http\Controllers\ProductController::class, 'unactivate_product']);
+// Filtering products by categories
+Route::get('/products/category/{category_name}', [\App\Http\Controllers\ProductController::class, 'view_products_by_category']);
 
 // Routes for orders
 Route::get('/orders', [\App\Http\Controllers\OrderController::class, 'orders']);
