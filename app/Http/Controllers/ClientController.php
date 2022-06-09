@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Slider;
 use App\Models\Category;
+use App\Cart;
 
 class ClientController extends Controller
 {
@@ -21,6 +22,22 @@ class ClientController extends Controller
         $products = Product::All()->where('status', 1);
 
         return view('client.shop')->with('products', $products)->with('categories', $categories);
+    }
+
+    public function addtocart($id) {
+        $product = Product::find($id);
+
+        // Check if there was a previous cart in session
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        // If not create a new instance of the cart object
+        $cart = new Cart($oldCart);
+        // then add the selected product to the cart
+        $cart->add($product, $id);
+
+        // finally put cart in session
+        Session::put('cart', $cart);
+
+        
     }
 
     public function cart() {

@@ -27,6 +27,7 @@ require __DIR__.'/auth.php';*/
 // Client Routes
 Route::get('/', [\App\Http\Controllers\ClientController::class, 'home']);
 Route::get('/shop', [\App\Http\Controllers\ClientController::class, 'shop']);
+Route::get('/addtocart/{id}', [\App\Http\Controllers\ClientController::class, 'addtocart']);
 Route::get('/cart', [\App\Http\Controllers\ClientController::class, 'cart']);
 Route::get('/checkout', [\App\Http\Controllers\ClientController::class, 'checkout']);
 
