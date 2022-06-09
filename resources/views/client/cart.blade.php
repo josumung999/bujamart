@@ -66,62 +66,51 @@
                 </div>
             </div>
             <div class="row justify-content-end">
-                <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
+                <div class="col-lg-6 mt-5 cart-wrap ftco-animate">
                     <div class="cart-total mb-3">
-                        <h3>Coupon Code</h3>
-                        <p>Enter your coupon code if you have one</p>
+                        <h3>Coupon de Réduction</h3>
+                        <p>Veuillez Saisir votre bon de réduction si vous en avez</p>
                         <form action="#" class="info">
                             <div class="form-group">
-                                <label for="">Coupon code</label>
+                                <label for="">Code du Coupon</label>
                                 <input type="text" class="form-control text-left px-3" placeholder="">
                             </div>
                         </form>
                     </div>
-                    <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Apply Coupon</a></p>
+                    <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Appliquer</a></p>
                 </div>
-                <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
+                <div class="col-lg-6 mt-5 cart-wrap ftco-animate">
                     <div class="cart-total mb-3">
-                        <h3>Estimate shipping and tax</h3>
-                        <p>Enter your destination to get a shipping estimate</p>
-                        <form action="#" class="info">
-                            <div class="form-group">
-                                <label for="">Country</label>
-                                <input type="text" class="form-control text-left px-3" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="country">State/Province</label>
-                                <input type="text" class="form-control text-left px-3" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="country">Zip/Postal Code</label>
-                                <input type="text" class="form-control text-left px-3" placeholder="">
-                            </div>
-                        </form>
-                    </div>
-                    <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Estimate</a></p>
-                </div>
-                <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
-                    <div class="cart-total mb-3">
-                        <h3>Cart Totals</h3>
+                        <h3>Total du Panier</h3>
                         <p class="d-flex">
-                            <span>Subtotal</span>
-                            <span>$20.60</span>
+                            <span>Sous-Total</span>
+                            <span>
+                                {{ Session::get('cart')->totalPrice }} BIF
+                            </span>
                         </p>
                         <p class="d-flex">
-                            <span>Delivery</span>
-                            <span>$0.00</span>
+                            <span>Livraison</span>
+                            @if (Session::get('cart')->totalPrice > 50000)
+                            <span>00 BIF</span> 
+                            @else
+                                <span title="Nous faisons payer un montant forfaitaire pour les commande de moins de 50.000 BIF">3000 BIF</span>
+                            @endif
                         </p>
                         <p class="d-flex">
-                            <span>Discount</span>
-                            <span>$3.00</span>
+                            <span>Reduction</span>
+                            <span>00 BIF</span>
                         </p>
                         <hr>
                         <p class="d-flex total-price">
                             <span>Total</span>
-                            <span>$17.60</span>
+                            @if (Session::get('cart')->totalPrice > 50000)
+                            <span>{{ Session::get('cart')->totalPrice }} BIF</span> 
+                            @else
+                                <span>{{ Session::get('cart')->totalPrice + 3000 }} BIF</span>
+                            @endif
                         </p>
                     </div>
-                    <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+                    <p><a href="{{ url('/checkout') }}" class="btn btn-primary py-3 px-4">Passer la Commande</a></p>
                 </div>
             </div>
         </div>
