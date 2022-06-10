@@ -39,13 +39,28 @@
 						BujaMart
 					</span>
                 </a>
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul> 
+                    </div>
+                @endif
 
-                <div class="wrap-input100 validate-input" data-validate = "Adresse email valide: moi@exemple.com">
+                @if (Session::has("status"))
+                    <div class="alert alert-success">
+                        {{ Session::get('status') }}
+                    </div>
+                @endif
+
+                <div class="wrap-input100 {{-- validate-input --}}" {{-- data-validate="Adresseemailvalide:moi@exemple.com" --}}>
                     <input class="input100" type="email" name="email">
                     <span class="focus-input100" data-placeholder="Email"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input" data-validate="Votre Mot de passe">
+                <div class="wrap-input100 {{-- validate-input --}}" {{-- data-validate="VotreMotdepasse" --}}>
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
