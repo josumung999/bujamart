@@ -38,11 +38,19 @@
                         <a class="dropdown-item" href="{{ url('/checkout') }}">Commandes</a>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ url('/login') }}" class="nav-link">
-                        Connexion
-                    </a>
-                </li>
+                @if (Session::has('cart'))
+                    <li class="nav-item">
+                        <a href="{{ url('/logout') }}" class="nav-link">
+                            Déconnexion
+                        </a>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a href="{{ url('/login') }}" class="nav-link">
+                            Connexion
+                        </a>
+                    </li> 
+                @endif
                 <li class="nav-item cta cta-colored">
                     <a href="{{ url('/cart') }}" class="nav-link" title="Mon Panier">
                         <span class="icon-shopping_cart">

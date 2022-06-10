@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 // Client Authentication routes
 Route::get('/login', [\App\Http\Controllers\ClientController::class, 'login']);
-//Route::post('/access_account', [\App\Http\Controllers\ClientController::class, 'access_account']);
+Route::post('/access_account', [\App\Http\Controllers\ClientController::class, 'access_account']);
 Route::get('/signup', [\App\Http\Controllers\ClientController::class, 'signup']);
 Route::post('/create_account', [\App\Http\Controllers\ClientController::class, 'create_account']);
 

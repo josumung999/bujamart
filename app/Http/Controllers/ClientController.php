@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Product;
 use App\Models\Slider;
 use App\Models\Category;
@@ -113,8 +114,18 @@ class ClientController extends Controller
             'password' => 'required'
         ]);
 
-        $client = Client::where('email', $request->input('email'));
+        $client = Client::where('email', $request->input('email'))->first();
 
-        
+        if ($client) {
+            if (Hash::check($request->input('password'), $client->password)) {
+                Session::put('client', $client);
+
+                return redirect('/shop');
+            } else {
+                return back()->with('status', 'Email ou Password incorrect')->with('type', 'danger');
+            }
+        } else {
+            return back()->with('status', 'Addresse email non reconnue')->with('type', 'danger');
+        }
     }
 }
