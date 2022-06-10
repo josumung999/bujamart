@@ -128,4 +128,10 @@ class ClientController extends Controller
             return back()->with('status', 'Addresse email non reconnue')->with('type', 'danger');
         }
     }
+
+    public function logout() {
+        Session::forget('client');
+
+        return redirect('/');
+    }
 }

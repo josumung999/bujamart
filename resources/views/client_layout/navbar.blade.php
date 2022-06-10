@@ -38,7 +38,7 @@
                         <a class="dropdown-item" href="{{ url('/checkout') }}">Commandes</a>
                     </div>
                 </li>
-                @if (Session::has('cart'))
+                @if (Session::has('client'))
                     <li class="nav-item">
                         <a href="{{ url('/logout') }}" class="nav-link">
                             Déconnexion

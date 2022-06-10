@@ -18,6 +18,7 @@ Route::get('/login', [\App\Http\Controllers\ClientController::class, 'login']);
 Route::post('/access_account', [\App\Http\Controllers\ClientController::class, 'access_account']);
 Route::get('/signup', [\App\Http\Controllers\ClientController::class, 'signup']);
 Route::post('/create_account', [\App\Http\Controllers\ClientController::class, 'create_account']);
+Route::get('/logout', [\App\Http\Controllers\ClientController::class, 'logout']);
 
 /*Route::get('/dashboard', function () {
     return view('dashboard');
