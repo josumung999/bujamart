@@ -34,13 +34,10 @@
         <div class="wrap-login100">
             <form class="login100-form validate-form">
                 <a href="{{url('/')}}" style="cursor: pointer;">
-                    <span class="login100-form-title p-b-26">
+                    <span class="login100-form-title p-b-18">
 						BujaMart
 					</span>
                 </a>
-                <span class="login100-form-title p-b-48">
-						<i class="zmdi zmdi-font"></i>
-					</span>
 
                 <div class="wrap-input100 validate-input" data-validate = "Votre nom complet: Alex Irakoze">
                     <input class="input100" type="text" name="name">
@@ -77,7 +74,7 @@
                     </div>
                 </div>
 
-                <div class="text-center p-t-115">
+                <div class="text-center p-t-30">
 						<span class="txt1">
 							Vous avez déjà un compte ?
 						</span>

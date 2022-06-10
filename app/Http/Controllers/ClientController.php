@@ -77,6 +77,9 @@ class ClientController extends Controller
     }
 
     public function checkout() {
+        if (!Session::has('client')) {
+            return view('client.login');
+        }
         return view('client.checkout');
     }
 

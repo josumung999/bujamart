@@ -38,9 +38,6 @@
 						BujaMart
 					</span>
                 </a>
-                <span class="login100-form-title p-b-48">
-						<i class="zmdi zmdi-font"></i>
-					</span>
 
                 <div class="wrap-input100 validate-input" data-validate = "Adresse email valide: moi@exemple.com">
                     <input class="input100" type="text" name="email">
