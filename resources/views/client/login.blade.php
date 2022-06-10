@@ -32,23 +32,40 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
-            <form class="login100-form validate-form">
+            <form class="login100-form validate-form" action="{{ url('/access_account') }}" method="POST">
+                {{ csrf_field() }}
                 <a href="{{url('/')}}" style="cursor: pointer;">
-                    <span class="login100-form-title p-b-26">
+                    <span class="login100-form-title p-b-18">
 						BujaMart
 					</span>
                 </a>
 
-                <div class="wrap-input100 validate-input" data-validate = "Adresse email valide: moi@exemple.com">
-                    <input class="input100" type="text" name="email">
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul> 
+                    </div>
+                @endif
+
+                @if (Session::has("status") && Session::has("type"))
+                    <div class="alert alert-{{ Session::get('type') }}">
+                        {{ Session::get('status') }}
+                    </div>
+                @endif
+
+                <div class="wrap-input100 {{-- validate-input --}}" {{-- data-validate="Adresseemailvalide:moi@exemple.com" --}}>
+                    <input class="input100" type="email" name="email">
                     <span class="focus-input100" data-placeholder="Email"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input" data-validate="Votre Mot de passe">
+                <div class="wrap-input100 {{-- validate-input --}}" {{-- data-validate="VotreMotdepasse" --}}>
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
-                    <input class="input100" type="password" name="pass">
+                    <input class="input100" type="password" name="password">
                     <span class="focus-input100" data-placeholder="Mot de Passe"></span>
                 </div>
 
@@ -61,7 +78,7 @@
                     </div>
                 </div>
 
-                <div class="text-center p-t-115">
+                <div class="text-center p-t-50">
 						<span class="txt1">
 							Vous n'avez pas de compte ?
 						</span>

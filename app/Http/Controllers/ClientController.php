@@ -104,6 +104,17 @@ class ClientController extends Controller
 
         $client->save();
 
-        return back()->with('status', 'Votre compte utilisateur a été créé');
+        return redirect('/login')->with('status', 'Votre compte utilisateur a été créé! Connectez-vous')->with('type', 'success');
+    }
+
+    public function access_account(Request $request) {
+        $this->validate($request, [
+            'email' => 'required|email|',
+            'password' => 'required'
+        ]);
+
+        $client = Client::where('email', $request->input('email'));
+
+        
     }
 }
