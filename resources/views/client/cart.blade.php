@@ -23,9 +23,9 @@
                         {{ Session::get('status') }}
                     </div>
                 @endif
-                
+
                 <h1 class="text-secondary mb-4">Aucun Produit dans le Panier</h1>
-                <a href="{{ url('/shop') }}" class="btn btn-primary">Voir Nos Produits <i class="ion-ios-arrow-left"></i> </a>
+                <a href="{{ url('/shop') }}" class="btn btn-primary">Voir Nos Produits </a>
             </div>
         </section>
         

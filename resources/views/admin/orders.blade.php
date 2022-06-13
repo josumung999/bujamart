@@ -10,6 +10,7 @@
 @endsection
 
 @section('content')
+    {{ Form::hidden('', $increment = 1) }}
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -45,12 +46,12 @@
                                         <th>Num.</th>
                                         <th>ID.</th>
                                         <th>Nom du Client</th>
-                                        <th>Adresse</th>
-                                        <th>Montant</th>
-                                        <th>Statut</th>
+                                        <th>Adresse Complète</th>
                                         <th>Téléphone</th>
-                                        <th>Email</th>
-                                        <th>Actions</th>
+                                        <th>E-mail</th>
+                                        <th>Articles</th>
+                                        <th>Statut</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -63,18 +64,18 @@
                                             <td>
                                                 Mukaza, N°11 Avenue de L'amitié, Rohero
                                             </td>
-                                            <td>
-                                              67.000 FBU
-                                            </td>
                                             
                                             <td>
-                                              En Cours
-                                            </td>
-                                            <td>
-                                              79 234 747
+                                                79 234 747
                                             </td>
                                             <td>
                                               alan@gmail.com
+                                            </td>
+                                            <td>
+                                                4
+                                            </td>
+                                            <td>
+                                                PENDING
                                             </td>
                                             <td>
                                                 <span class="d-flex flex-row">
@@ -87,51 +88,18 @@
                                                 </span>
                                             </td>
                                         </tr>
-                                        <tr>
-                                          <td> 1</td>
-                                          <td>
-                                              2838372938282
-                                          </td>
-                                          <td>Alan Dale</td>
-                                          <td>
-                                              Mukaza, N°11 Avenue de L'amitié, Rohero
-                                          </td>
-                                          <td>
-                                            67.000 FBU
-                                          </td>
-                                          
-                                          <td>
-                                            En Cours
-                                          </td>
-                                          <td>
-                                            79 234 747
-                                          </td>
-                                          <td>
-                                            alan@gmail.com
-                                          </td>
-                                          <td>
-                                              <span class="d-flex flex-row">
-                                                  <a href="#" class="btn btn-primary btn-sm mx-2">
-                                                      <i class="fas fa-edit"></i>
-                                                  </a>
-                                                  <a href="#" id="delete" class="btn btn-danger btn-sm">
-                                                      <i class="fa fa-times"></i>
-                                                  </a>
-                                              </span>
-                                          </td>
-                                      </tr>
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                      <th>Num.</th>
-                                      <th>ID.</th>
-                                      <th>Nom du Client</th>
-                                      <th>Adresse</th>
-                                      <th>Montant</th>
-                                      <th>Statut</th>
-                                      <th>Téléphone</th>
-                                      <th>Email</th>
-                                      <th>Action</th>
+                                        <th>Num.</th>
+                                        <th>ID.</th>
+                                        <th>Nom du Client</th>
+                                        <th>Adresse Complète</th>
+                                        <th>Téléphone</th>
+                                        <th>E-mail</th>
+                                        <th>Articles</th>
+                                        <th>Statut</th>
+                                        <th>Action</th>
                                     </tr>
                                     </tfoot>
                                 </table>
