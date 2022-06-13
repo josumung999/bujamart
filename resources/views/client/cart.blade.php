@@ -11,11 +11,6 @@
                 <div class="col-md-9 ftco-animate text-center">
                     <p class="breadcrumbs"><span class="mr-2"><a href="{{ url('/') }}">Accueil</a></span> <span>Panier</span></p>
                     <h1 class="mb-0 bread">Mon Panier</h1>
-                    @if (Session::has('status') && Session::has('type'))
-                        <div class="alert alert-{{ Session::get('type') }}">
-                            {{ Session::get('status') }}
-                        </div>
-                    @endif
                 </div>
             </div>
         </div>
@@ -23,10 +18,14 @@
     @if (!Session::has('cart'))
         <section class="ftco-section ftco-cart">
             <div class="container">
-                <div class="d-flex justify-between items-center">
-                    <span>Aucun Produit dans le panier</span>
-                    <span>Acheter Maintenant</span>
-                </div>
+                @if (Session::has('status') && Session::has('type'))
+                    <div class="alert alert-{{ Session::get('type') }}">
+                        {{ Session::get('status') }}
+                    </div>
+                @endif
+                
+                <h1 class="text-secondary mb-4">Aucun Produit dans le Panier</h1>
+                <a href="{{ url('/shop') }}" class="btn btn-primary">Voir Nos Produits <i class="ion-ios-arrow-left"></i> </a>
             </div>
         </section>
         
