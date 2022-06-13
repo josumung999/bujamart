@@ -49,45 +49,55 @@
                                         <th>Adresse Complète</th>
                                         <th>Téléphone</th>
                                         <th>E-mail</th>
-                                        <th>Articles</th>
+                                        <th>Montant</th>
                                         <th>Statut</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td> 1</td>
-                                            <td>
-                                                2838372938282
-                                            </td>
-                                            <td>Alan Dale</td>
-                                            <td>
-                                                Mukaza, N°11 Avenue de L'amitié, Rohero
-                                            </td>
-                                            
-                                            <td>
-                                                79 234 747
-                                            </td>
-                                            <td>
-                                              alan@gmail.com
-                                            </td>
-                                            <td>
-                                                4
-                                            </td>
-                                            <td>
-                                                PENDING
-                                            </td>
-                                            <td>
-                                                <span class="d-flex flex-row">
-                                                    <a href="#" class="btn btn-primary btn-sm mx-2">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
-                                                    <a href="#" id="delete" class="btn btn-danger btn-sm">
-                                                        <i class="fa fa-times"></i>
-                                                    </a>
-                                                </span>
-                                            </td>
-                                        </tr>
+                                        @foreach ($orders as $order)
+                                            <tr>
+                                                <td>
+                                                    {{ $increment }}
+                                                </td>
+                                                <td>
+                                                    {{ $order->id }}
+                                                </td>
+                                                <td>
+                                                    {{ $order->firstname.' '.$order->lastname }}
+                                                </td>
+                                                <td>
+                                                    {{ $order->address.', '.$order->commune.' ('.$order->address_description.')' }}
+                                                </td>
+                                                
+                                                <td>
+                                                    {{ $order->phone }}
+                                                </td>
+                                                <td>
+                                                    {{ $order->client_email }}
+                                                </td>
+                                                <td>
+                                                    {{-- @foreach ($order->cart->items as $item)
+                                                        {{ $item['product_name'] }}
+                                                    @endforeach --}}
+                                                    {{ $order->cart->totalPrice }} BIF
+                                                </td>
+                                                <td>
+                                                    {{ $order->status }}
+                                                </td>
+                                                <td>
+                                                    <span class="d-flex flex-row">
+                                                        <a href="#" class="btn btn-primary btn-sm mx-2">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+                                                        <a href="#" id="delete" class="btn btn-danger btn-sm">
+                                                            <i class="fa fa-times"></i>
+                                                        </a>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            {{ Form::hidden('', $increment = $increment + 1) }}
+                                        @endforeach
                                     </tbody>
                                     <tfoot>
                                     <tr>
@@ -97,7 +107,7 @@
                                         <th>Adresse Complète</th>
                                         <th>Téléphone</th>
                                         <th>E-mail</th>
-                                        <th>Articles</th>
+                                        <th>Montant</th>
                                         <th>Statut</th>
                                         <th>Action</th>
                                     </tr>
