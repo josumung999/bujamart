@@ -28,18 +28,19 @@
                         </div>
                     @endif
                     <form action="{{ url('/place-order') }}" method="POST" class="billing-form">
+                        {{ csrf_field() }}
                         <h3 class="mb-4 billing-heading">Informations de Livraison</h3>
                         <div class="row align-items-end">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="firstname">Prénom</label>
-                                    <input type="text" class="form-control" placeholder="">
+                                    <input name="firstname" type="text" class="form-control" placeholder="">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="lastname">Nom de Famille</label>
-                                    <input type="text" class="form-control" placeholder="">
+                                    <input name="lastname" type="text" class="form-control" placeholder="">
                                 </div>
                             </div>
                             <div class="w-100"></div>
