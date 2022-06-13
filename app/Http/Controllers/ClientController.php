@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Slider;
 use App\Models\Category;
 use App\Models\Client;
+use App\Models\Order;
 use App\Cart;
 use Session;
 
@@ -83,6 +84,33 @@ class ClientController extends Controller
             return view('client.login');
         }
         return view('client.checkout');
+    }
+
+    public function place_order(Request $request) {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        // If not create a new instance of the cart object
+        $cart = new Cart($oldCart);
+
+        // Get user email from Session
+        $client = Session::get('client');
+
+        $order = new Order();
+        $order->firstname = $request->input('firstname');
+        $order->lastname = $request->input('lastname');
+        $order->commune = $request->input('commune');
+        $order->address = $request->input('address');
+        $order->address_description = $request->input('address_description');
+        $order->phone = $request->input('phone');
+        $order->client_email = $client['email'];
+        $order->cart = serialize($cart);
+
+
+        $order->save();
+
+        Session::forget('cart');
+
+        return redirect('/cart')->with('status', 'Votre Commande a été enregistré avec succès !!!')->with('type', 'success');
+
     }
 
     public function login() {

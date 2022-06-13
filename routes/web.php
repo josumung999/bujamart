@@ -34,6 +34,7 @@ Route::get('/addtocart/{id}', [\App\Http\Controllers\ClientController::class, 'a
 Route::post('/update_qty/{id}', [\App\Http\Controllers\ClientController::class, 'update_qty']);
 Route::get('/remove_from_cart/{id}', [\App\Http\Controllers\ClientController::class, 'remove_from_cart']);
 Route::get('/cart', [\App\Http\Controllers\ClientController::class, 'cart']);
+Route::post('place-order', [\App\Http\Controllers\ClientController::class, 'place_order']);
 Route::get('/checkout', [\App\Http\Controllers\ClientController::class, 'checkout']);
 
 

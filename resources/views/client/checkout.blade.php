@@ -22,7 +22,12 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-7 ftco-animate">
-                    <form action="#" class="billing-form">
+                    @if(Session::has('client'))
+                        <div class="alert alert-info">
+                            Vous êtes connecté en tant que {{ Session::get('client')['email'] }}
+                        </div>
+                    @endif
+                    <form action="{{ url('/place-order') }}" method="POST" class="billing-form">
                         <h3 class="mb-4 billing-heading">Informations de Livraison</h3>
                         <div class="row align-items-end">
                             <div class="col-md-6">
@@ -40,13 +45,13 @@
                             <div class="w-100"></div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="country">Commune</label>
+                                    <label for="commune">Commune</label>
                                     <div class="select-wrap">
                                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                        <select name="" id="" class="form-control">
-                                            <option value="">Mukaza</option>
-                                            <option value="">Muha</option>
-                                            <option value="">Ntahangwa</option>
+                                        <select name="commune" id="commune" class="form-control">
+                                            <option value="Mukaza">Mukaza</option>
+                                            <option value="Muha">Muha</option>
+                                            <option value="Ntahangwa">Ntahangwa</option>
                                         </select>
                                     </div>
                                 </div>
@@ -54,38 +59,33 @@
                             <div class="w-100"></div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="streetaddress">Adresse Complète</label>
-                                    <input type="text" class="form-control" placeholder="Exemple: N°11, Avenue Buragane, Kinindo">
+                                    <label for="address">Adresse Complète</label>
+                                    <input type="text" name="address" class="form-control" placeholder="Exemple: N°11, Avenue Buragane, Kinindo">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Détails Supplementaire">
-                                </div>
-                            </div>
-                            <div class="w-100"></div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="phone">Téléphone</label>
-                                    <input type="text" class="form-control" placeholder="">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="emailaddress">Adresse Email</label>
-                                    <input type="text" class="form-control" placeholder="">
+                                    <input type="text" name="address_description" class="form-control" placeholder="Détails Supplementaire">
                                 </div>
                             </div>
                             <div class="w-100"></div>
                             <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="phone">Téléphone</label>
+                                    <input type="tel" name="phone" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                            <div class="w-100"></div>
+                            {{-- <div class="col-md-12">
                                 <div class="form-group mt-4">
                                     <div class="radio">
                                         <label class="mr-3"><input type="radio" name="optradio"> Créer un Compte ? </label>
                                         <label><input type="radio" name="optradio"> Livrée à une adresse différente ?</label>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
+                        <input type="submit" value="Placer la Commande" class="btn btn-primary py-3 px-4">
                     </form><!-- END -->
                 </div>
                 <div class="col-xl-5">
@@ -94,56 +94,32 @@
                             <div class="cart-detail cart-total p-3 p-md-4">
                                 <h3 class="billing-heading mb-4">Panier</h3>
                                 <p class="d-flex">
-                                    <span>Subtotal</span>
-                                    <span>$20.60</span>
+                                    <span>Sous-Total</span>
+                                    <span>
+                                        {{ Session::get('cart')->totalPrice }} BIF
+                                    </span>
                                 </p>
                                 <p class="d-flex">
-                                    <span>Delivery</span>
-                                    <span>$0.00</span>
+                                    <span>Livraison</span>
+                                    @if (Session::get('cart')->totalPrice > 50000)
+                                    <span>00 BIF</span> 
+                                    @else
+                                        <span title="Nous faisons payer un montant forfaitaire pour les commande de moins de 50.000 BIF">3000 BIF</span>
+                                    @endif
                                 </p>
                                 <p class="d-flex">
-                                    <span>Discount</span>
-                                    <span>$3.00</span>
+                                    <span>Reduction</span>
+                                    <span>00 BIF</span>
                                 </p>
                                 <hr>
                                 <p class="d-flex total-price">
                                     <span>Total</span>
-                                    <span>$17.60</span>
+                                    @if (Session::get('cart')->totalPrice > 50000)
+                                    <span>{{ Session::get('cart')->totalPrice }} BIF</span> 
+                                    @else
+                                        <span>{{ Session::get('cart')->totalPrice + 3000 }} BIF</span>
+                                    @endif
                                 </p>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="cart-detail p-3 p-md-4">
-                                <h3 class="billing-heading mb-4">Moyen de Paiement</h3>
-                                <div class="form-group">
-                                    <div class="col-md-12">
-                                        <div class="radio">
-                                            <label><input type="radio" name="optradio" class="mr-2"> Lumicash/Ecocash</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-12">
-                                        <div class="radio">
-                                            <label><input type="radio" name="optradio" class="mr-2"> Paypal</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-12">
-                                        <div class="radio">
-                                            <label><input type="radio" name="optradio" class="mr-2"> Payer avec Ihela</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-12">
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" value="" class="mr-2"> J'ai lu et j'accepte les conditions d'utilisation</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p><a href="#"class="btn btn-primary py-3 px-4">Placer la Commande</a></p>
                             </div>
                         </div>
                     </div>
