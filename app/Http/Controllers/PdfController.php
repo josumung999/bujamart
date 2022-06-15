@@ -54,9 +54,9 @@ class PdfController extends Controller
                             </th>
                             <th>
                                 <h4 class="text-secondary">Pour les Paiements via Lumicash/Ecoscash</h4>
-                                Lumicash: 45683 <br>
-                                EcoCash: 4948394 <br>
-                                Nom: BUJAMART SA <br>
+                                <span class="text-secondary">Lumicash: 45683 </span><br>
+                                <span class="text-secondary">EcoCash: 4948394 </span><br>
+                                <span class="text-secondary">Nom: BUJAMART SA </span>
                             </th>
                         </tr>
                     </thead>
@@ -103,8 +103,10 @@ class PdfController extends Controller
                     <th>
                         <h3 class="text-danger">'.$status.'</h3>
                     </th>
-                    <th>Total à payer (Plus frais de livraison)</th>
-                    <th>'.($totalPrice + 3000).' BIF</th>
+                    <th>
+                        <h5 class="text-secondary">Total à payer (Plus frais de livraison)</h5>
+                    </th>
+                    <th><h5 class="text-primary">'.($totalPrice + 3000).' BIF </h5></th>
                 </tr>
             </thead>
         </table>';
