@@ -38,6 +38,12 @@
                             <div class="card-header">
                                 <h3 class="card-title">Toutes les commandes</h3>
                             </div>
+
+                            @if (Session::has('error'))
+                                    <div class="alert alert-danger mx-2 my-2">
+                                        {{ Session::get('error') }}
+                                    </div>
+                            @endif
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <table id="example2" class="table table-bordered table-hover">
@@ -90,8 +96,8 @@
                                                         <a href="#" class="btn btn-primary btn-sm mx-2">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
-                                                        <a href="#" id="delete" class="btn btn-danger btn-sm">
-                                                            <i class="fa fa-times"></i>
+                                                        <a href="{{ url('/view-pdf/'.$order->id) }}" type="Voir la facture" class="btn btn-info btn-sm mx-2">
+                                                            <i class="fas fa-file-pdf"></i>
                                                         </a>
                                                     </span>
                                                 </td>

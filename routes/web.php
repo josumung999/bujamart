@@ -39,6 +39,9 @@ Route::get('/checkout', [\App\Http\Controllers\ClientController::class, 'checkou
 
 
 
+// Get the PDF invoice order
+Route::get('/view-pdf/{id}', [\App\Http\Controllers\PdfController::class, 'view_pdf']);
+
 
 /*
     ADMIN ROUTES
