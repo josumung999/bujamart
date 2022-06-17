@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Product;
 use App\Models\Slider;
 use App\Models\Category;
 use App\Models\Client;
 use App\Models\Order;
 use App\Cart;
+use App\Mail\SendMail;
 use Session;
 
 class ClientController extends Controller
@@ -91,6 +93,8 @@ class ClientController extends Controller
         // If not create a new instance of the cart object
         $cart = new Cart($oldCart);
 
+        $payer_id = time();
+
         // Get user email from Session
         $client = Session::get('client');
 
@@ -103,12 +107,27 @@ class ClientController extends Controller
         $order->phone = $request->input('phone');
         $order->client_email = $client['email'];
         $order->cart = serialize($cart);
+        $order->payer_id = $payer_id;
 
 
         $order->save();
 
         Session::forget('cart');
 
+        // Sending email to users with order details
+        $orders = Order::where('payer_id', $payer_id)->get();
+
+        $orders->transform(function ($order, $key) {
+            $order->cart = unserialize($order->cart);
+
+            return $order;
+        });
+
+        // Getting the email from session
+        $email = $client['email'];
+
+        // Sending the actual Mail
+        Mail::to($email)->send(new SendMail($orders));
 
         return redirect('/cart')->with('status', 'Votre Commande a été enregistré avec succès !!!')->with('type', 'success');
 
