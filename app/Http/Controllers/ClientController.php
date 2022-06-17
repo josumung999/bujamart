@@ -109,6 +109,7 @@ class ClientController extends Controller
 
         Session::forget('cart');
 
+
         return redirect('/cart')->with('status', 'Votre Commande a été enregistré avec succès !!!')->with('type', 'success');
 
     }
@@ -132,7 +133,7 @@ class ClientController extends Controller
         $client->password = bcrypt($request->input('password'));
 
         $client->save();
-
+        
         return redirect('/login')->with('status', 'Votre compte utilisateur a été créé! Connectez-vous')->with('type', 'success');
     }
 
