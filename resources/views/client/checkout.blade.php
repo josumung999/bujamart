@@ -77,14 +77,14 @@
                                 </div>
                             </div>
                             <div class="w-100"></div>
-                            <div class="col-md-12">
+                            {{-- <div class="col-md-12">
                                 <div class="form-group mt-4">
                                     <div class="radio">
-                                        <label class="mr-3"><input type="radio" name="optradio"> Paiement par Carte </label>
-                                        <label><input type="radio" name="optradio"> Cash à la Livraison</label>
+                                        <label class="mr-3"><input type="radio" name="optradio"> Créer un Compte ? </label>
+                                        <label><input type="radio" name="optradio"> Livrée à une adresse différente ?</label>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         <input type="submit" value="Placer la Commande" class="btn btn-primary py-3 px-4">
                     </form><!-- END -->
