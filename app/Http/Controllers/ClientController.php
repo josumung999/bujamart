@@ -115,7 +115,7 @@ class ClientController extends Controller
         
 
         // returning the user to the stripe payment form
-        return redirect('/stripe');
+        return redirect('/stripe')->with('status', 'Veuillez Proceder au paiement');
     }
 
     public function stripe() {
@@ -126,13 +126,14 @@ class ClientController extends Controller
        
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         Stripe\Charge::create ([
-                "amount" => Session::get('cart')->totalPrice,
+                "amount" => Session::get('cart')->totalPrice + 3000,
                 "currency" => "bif",
                 "source" => $request->stripeToken,
                 "description" => "Testing the payment with Stripe" 
         ]);
 
 
+        $payer_id = Session::get('order')->payer_id;
         Session::get('order')->save();
 
         // Sending email to users with order details
@@ -145,7 +146,7 @@ class ClientController extends Controller
         });
 
         // Getting the email from session
-        $email = $client['email'];
+        $email = Session::get('client')['email'];
 
         // Sending the actual Mail
         Mail::to($email)->send(new SendMail($orders));
