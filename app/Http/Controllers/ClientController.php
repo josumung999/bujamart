@@ -13,6 +13,7 @@ use App\Models\Order;
 use App\Cart;
 use App\Mail\SendMail;
 use Session;
+use Stripe;
 
 class ClientController extends Controller
 {
@@ -110,9 +111,29 @@ class ClientController extends Controller
         $order->payer_id = $payer_id;
 
 
-        $order->save();
+        Session::put('order', $order);
+        
 
-        Session::forget('cart');
+        // returning the user to the stripe payment form
+        return redirect('/stripe');
+    }
+
+    public function stripe() {
+        return view('client.stripe');
+    }
+
+    public function stripePost(Request $request) {
+       
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        Stripe\Charge::create ([
+                "amount" => Session::get('cart')->totalPrice,
+                "currency" => "bif",
+                "source" => $request->stripeToken,
+                "description" => "Testing the payment with Stripe" 
+        ]);
+
+
+        Session::get('order')->save();
 
         // Sending email to users with order details
         $orders = Order::where('payer_id', $payer_id)->get();
@@ -128,8 +149,11 @@ class ClientController extends Controller
 
         // Sending the actual Mail
         Mail::to($email)->send(new SendMail($orders));
+        
 
-        return redirect('/cart')->with('status', 'Votre Commande a été enregistré avec succès !!!')->with('type', 'success');
+        Session::forget('cart');
+
+        return redirect('/cart')->with('status', 'Votre Paiement a été effectué avec succès !!!')->with('type', 'success');
 
     }
 

@@ -37,6 +37,9 @@ Route::get('/cart', [\App\Http\Controllers\ClientController::class, 'cart']);
 Route::post('place-order', [\App\Http\Controllers\ClientController::class, 'place_order']);
 Route::get('/checkout', [\App\Http\Controllers\ClientController::class, 'checkout']);
 
+// Stripe Payment routes
+Route::get('/stripe', [\App\Http\Controllers\ClientController::class, 'stripe']);
+Route::post('/stripe', [\App\Http\Controllers\ClientController::class, 'stripePost'])->name('stripe.post');
 
 
 // Get the PDF invoice order
